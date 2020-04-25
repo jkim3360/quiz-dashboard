@@ -34,10 +34,7 @@ const Topbar = props => {
     >
       <Toolbar>
         <RouterLink to="/">
-          <img
-            alt="Logo"
-            src="/images/logos/logo--white.svg"
-          />
+          {/* insert image or logo here fekkai */}
         </RouterLink>
         <div className={classes.flexGrow} />
         <Hidden mdDown>
