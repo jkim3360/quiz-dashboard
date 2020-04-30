@@ -47,6 +47,11 @@ const TotalUsers = props => {
 
   const classes = useStyles();
 
+  let quizCount;
+  if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
+    quizCount = JSON.parse(localStorage.getItem('quizAnalytics')).quizCount;
+  }
+  
   return (
     <ApiContextConsumer>
       {context => (
@@ -70,7 +75,7 @@ const TotalUsers = props => {
                 </Typography>
                 <Typography variant="h3">
                   {!context.quizCount
-                    ? <CircularProgress />
+                    ? quizCount || <CircularProgress />
                     : context.quizCount}
                 </Typography>
               </Grid>

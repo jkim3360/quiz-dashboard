@@ -237,6 +237,61 @@ class ApiContextProvider extends Component {
       weather
     });
     console.log(this.state.completedConversion);
+
+    const { emailCount, quizOrdersArr } = this.state;
+
+    const quizAnalytics = {
+      emailCount: emailCount,
+      quizCount: quizCount,
+      frontSelfieCount: front_selfie_count,
+      noFrontSelfieCount: no_front_selfie_count,
+      orderCount: quizOrdersArr.length,
+      completed: completedQuizCount,
+      completedConversion:
+        ((quizOrdersArr.length / completedQuizCount) * 100).toFixed(2) + '%',
+      totalConversion:
+        ((quizOrdersArr.length / quizCount) * 100).toFixed(2) + '%',
+        droppedQuizCount: droppedQuizCount,
+      dropEmail:
+      drop_email + ' (' + ((drop_email / droppedQuizCount) * 100).toFixed(2) + '%)',
+      droppedAfterSelfie:
+        front_selfie +
+        ' (' +
+        ((front_selfie / droppedQuizCount) * 100).toFixed(2) +
+        '%)',
+      droppedNoSelfieCorrecting:
+        no_front_selfie_edit +
+        ' (' +
+        ((no_front_selfie_edit / droppedQuizCount) * 100).toFixed(2) +
+        '%)',
+      droppedSelfieCorrecting:
+        front_selfie_edit +
+        ' (' +
+        ((front_selfie_edit / droppedQuizCount) * 100).toFixed(2) +
+        '%)',
+      droppedHairThickness:
+        hair_thickness +
+        ' (' +
+        ((hair_thickness / droppedQuizCount) * 100).toFixed(2) +
+        '%)',
+      droppedHairCondition:
+        hair_condition +
+        ' (' +
+        ((hair_condition / droppedQuizCount) * 100).toFixed(2) +
+        '%)',
+      droppedHairGoals:
+        hair_goals + ' (' + ((hair_goals / droppedQuizCount) * 100).toFixed(2) + '%)',
+      droppedGeofactors:
+        weather + ' (' + ((weather / droppedQuizCount) * 100).toFixed(2) + '%)'
+    };
+    localStorage.setItem('quizAnalytics', JSON.stringify(quizAnalytics));
+
+   if (localStorage.getItem('quizAnalytics')) {
+     this.setState({
+       quizAnalytics: JSON.parse(localStorage.getItem('quizAnalytics'))
+     })
+   }
+
   };
 
   fetchQuizOrders = async () => {

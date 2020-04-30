@@ -82,7 +82,7 @@ const Klaviyo = props => {
                 className={classes.differenceValue}
                 variant="body2"
               >
-                Since 03-20-20 Launch{' '}
+                03-20-20 Launch{' '}
               </Typography>
             </div>
           </CardContent>

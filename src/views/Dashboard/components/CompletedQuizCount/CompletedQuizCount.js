@@ -45,6 +45,12 @@ const CompletedQuizCount = props => {
 
   const classes = useStyles();
 
+  let completedConversion;
+  if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
+    completedConversion = JSON.parse(localStorage.getItem('quizAnalytics'))
+      .completedConversion;
+  }
+
   return (
     <ApiContextConsumer>
       {context => (
@@ -64,18 +70,12 @@ const CompletedQuizCount = props => {
                   gutterBottom
                   variant="body2"
                 >
-                  COMPLETED QUIZ CONVERSION
+                  CONVERSION
                 </Typography>
                 <Typography variant="h3">
-                  {!context.completedQuizCount &&
-                  !context.completedQuizCount ? (
-                      <CircularProgress />
-                    ) : (
-                      context.completedQuizCount +
-                    ' / ' +
-                    (context.completedConversion * 100).toFixed(2) +
-                    '%'
-                    )}
+                  {!context.completedQuizCount && !context.completedQuizCount
+                    ? completedConversion || <CircularProgress />
+                    : (context.completedConversion * 100).toFixed(2) + '%'}
                 </Typography>
               </Grid>
               <Grid item>
@@ -86,9 +86,16 @@ const CompletedQuizCount = props => {
             </Grid>
             <LinearProgress
               className={classes.progress}
-              value={context.completedConversion}
+              value={(context.completedQuizCount / context.quizCount) * 100}
               variant="determinate"
             />
+            <Typography
+              className={classes.caption}
+              variant="caption"
+            >
+              {context.completedQuizCount} out of {context.quizCount} users
+              completed quiz
+            </Typography>
           </CardContent>
         </Card>
       )}

@@ -45,6 +45,24 @@ const DropOffData = props => {
   const classes = useStyles();
   const theme = useTheme();
 
+  let quizAnalytics;
+  if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
+    quizAnalytics = JSON.parse(localStorage.getItem('quizAnalytics'));
+  }
+
+  const {
+    dropEmail,
+    droppedAfterSelfie,
+    droppedNoSelfieCorrecting,
+    droppedSelfieCorrecting,
+    droppedHairThickness,
+    droppedHairCondition,
+    droppedHairGoals,
+    droppedGeofactors
+  } = quizAnalytics;
+
+  console.log(quizAnalytics);
+
   const data = {
     datasets: [
       {

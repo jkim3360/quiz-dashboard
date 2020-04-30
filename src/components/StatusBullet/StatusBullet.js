@@ -77,7 +77,6 @@ StatusBullet.propTypes = {
 
 StatusBullet.defaultProps = {
   size: 'md',
-  color: 'default'
 };
 
 export default StatusBullet;
