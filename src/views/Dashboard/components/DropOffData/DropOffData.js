@@ -88,7 +88,7 @@ const DropOffData = props => {
     },
     responsive: true,
     maintainAspectRatio: false,
-    animation: true,
+    animation: false,
     cutoutPercentage: 80,
     layout: { padding: 0 },
     tooltips: {
