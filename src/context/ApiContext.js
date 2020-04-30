@@ -27,9 +27,9 @@ class ApiContextProvider extends Component {
   };
 
   async componentDidMount() {
-    // this.fetchKlaviyoEmails();
+    this.fetchKlaviyoEmails();
     this.fetchShopifyOrders();
-    // this.fetchUserData();
+    this.fetchUserData();
 
     // localStorage.setItem('userData', JSON.stringify(userData));
   }
