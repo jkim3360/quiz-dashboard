@@ -3,15 +3,20 @@ import { ApiContextConsumer } from '../../../../context/ApiContext';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import ErrorOutline from '@material-ui/icons/ErrorOutline';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  Avatar,
+  LinearProgress,
+  CircularProgress
+} from '@material-ui/core';
+import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%',
-    backgroundColor: theme.palette.error.white,
-    color: theme.palette.primary
+    height: '100%'
   },
   content: {
     alignItems: 'center',
@@ -21,18 +26,21 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.white,
-    color: theme.palette.error.dark,
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
     height: 56,
     width: 56
   },
   icon: {
     height: 32,
     width: 32
+  },
+  progress: {
+    marginTop: theme.spacing(3)
   }
 }));
 
-const TotalProfit = props => {
+const CompletedQuizCount = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
@@ -52,29 +60,35 @@ const TotalProfit = props => {
               <Grid item>
                 <Typography
                   className={classes.title}
-                  color="inherit"
+                  color="textSecondary"
                   gutterBottom
                   variant="body2"
                 >
-                  DROPPED QUIZ COUNT
+                  COMPLETED QUIZ CONVERSION
                 </Typography>
-                <Typography
-                  color="inherit"
-                  variant="h3"
-                >
-                  {!context.droppedQuizCount ? (
-                    <CircularProgress />
-                  ) : (
-                    context.droppedQuizCount
-                  )}
+                <Typography variant="h3">
+                  {!context.completedQuizCount &&
+                  !context.completedQuizCount ? (
+                      <CircularProgress />
+                    ) : (
+                      context.completedQuizCount +
+                    ' / ' +
+                    (context.completedConversion * 100).toFixed(2) +
+                    '%'
+                    )}
                 </Typography>
               </Grid>
               <Grid item>
                 <Avatar className={classes.avatar}>
-                  <ErrorOutline className={classes.icon} />
+                  <InsertChartIcon className={classes.icon} />
                 </Avatar>
               </Grid>
             </Grid>
+            <LinearProgress
+              className={classes.progress}
+              value={context.completedConversion}
+              variant="determinate"
+            />
           </CardContent>
         </Card>
       )}
@@ -82,8 +96,8 @@ const TotalProfit = props => {
   );
 };
 
-TotalProfit.propTypes = {
+CompletedQuizCount.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalProfit;
+export default CompletedQuizCount;

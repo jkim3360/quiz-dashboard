@@ -4,14 +4,12 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import ErrorOutline from '@material-ui/icons/ErrorOutline';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import EmailIcon from '@material-ui/icons/Email';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%',
-    backgroundColor: theme.palette.error.white,
-    color: theme.palette.primary
+    height: '100%'
   },
   content: {
     alignItems: 'center',
@@ -21,18 +19,29 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.white,
-    color: theme.palette.error.dark,
+    backgroundColor: theme.palette.error.main,
     height: 56,
     width: 56
   },
   icon: {
     height: 32,
     width: 32
+  },
+  difference: {
+    marginTop: theme.spacing(2),
+    display: 'flex',
+    alignItems: 'center'
+  },
+  differenceIcon: {
+    color: theme.palette.error.dark
+  },
+  differenceValue: {
+    color: theme.palette.error.dark,
+    marginRight: theme.spacing(1)
   }
 }));
 
-const TotalProfit = props => {
+const Klaviyo = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
@@ -52,29 +61,30 @@ const TotalProfit = props => {
               <Grid item>
                 <Typography
                   className={classes.title}
-                  color="inherit"
+                  color="textSecondary"
                   gutterBottom
                   variant="body2"
                 >
-                  DROPPED QUIZ COUNT
+                  EMAILS CAPTURED{' '}
                 </Typography>
-                <Typography
-                  color="inherit"
-                  variant="h3"
-                >
-                  {!context.droppedQuizCount ? (
-                    <CircularProgress />
-                  ) : (
-                    context.droppedQuizCount
-                  )}
-                </Typography>
+                <Typography variant="h3">{
+                context.emailCount}</Typography>
               </Grid>
               <Grid item>
                 <Avatar className={classes.avatar}>
-                  <ErrorOutline className={classes.icon} />
+                  <EmailIcon className={classes.icon} />
                 </Avatar>
               </Grid>
             </Grid>
+            <div className={classes.difference}>
+              {/* <ArrowDownwardIcon className={classes.differenceIcon} /> */}
+              <Typography
+                className={classes.differenceValue}
+                variant="body2"
+              >
+                Since 03-20-20 Launch{' '}
+              </Typography>
+            </div>
           </CardContent>
         </Card>
       )}
@@ -82,8 +92,8 @@ const TotalProfit = props => {
   );
 };
 
-TotalProfit.propTypes = {
+Klaviyo.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalProfit;
+export default Klaviyo;

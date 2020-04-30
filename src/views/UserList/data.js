@@ -17,244 +17,6 @@ export default [
   },
   {
     id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
     name: 'Cao Yu',
     address: {
       country: 'USA',
@@ -377,5 +139,19 @@ export default [
     phone: '801-301-7894',
     avatarUrl: '/images/avatars/avatar_10.png',
     createdAt: 1522702800000
+  },
+  {
+    id: uuid(),
+    name: 'Ava Gregoraci',
+    address: {
+      country: 'USA',
+      state: 'California',
+      city: 'Redondo Beach',
+      street: '2188  Armbrester Drive'
+    },
+    email: 'ava.gregoraci@devias.io',
+    avatarUrl: '/images/avatars/avatar_7.png',
+    phone: '415-907-2647',
+    createdAt: 1554325200000
   }
 ];
