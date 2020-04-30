@@ -65,10 +65,7 @@ const LatestOrders = props => {
           {...rest}
           className={clsx(classes.root, className)}
         >
-          <CardHeader
-            
-            title="Latest Orders"
-          />
+          <CardHeader title="Latest Orders" />
           <Divider />
           <CardContent className={classes.content}>
             <PerfectScrollbar>
@@ -95,35 +92,42 @@ const LatestOrders = props => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {context.quizOrdersArr.reverse().slice(0, 10).map(order => (
-                      <TableRow
-                        hover
-                        key={order.number}
-                      >
-                        <TableCell><a
-              href={`https://fekkaibrands.myshopify.com/admin/orders/${order.orderId}`}
-              style={{ textDecoration: "none", color: "black" }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >FK{order.number}</a></TableCell>
-                        <TableCell>{order.email}</TableCell>
-                        <TableCell>
-                          {/* {moment */}
-                          {new Date(order.orderCreated).toDateString()}
-                          {/* .format('DD/MM/YYYY')} */}
-                        </TableCell>
-                        <TableCell>
-                          <div className={classes.statusContainer}>
-                            <StatusBullet
-                              className={classes.status}
-                              color={statusColors[order.status]}
-                              size="sm"
-                            />
-                            {order.totalPrice}
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    {context.quizOrdersArr
+                      .reverse()
+                      .slice(0, 10)
+                      .map(order => (
+                        <TableRow
+                          hover
+                          key={order.number}
+                        >
+                          <TableCell>
+                            <a
+                              href={`https://fekkaibrands.myshopify.com/admin/orders/${order.orderId}`}
+                              rel="noopener noreferrer"
+                              style={{ textDecoration: 'none', color: 'black' }}
+                              target="_blank"
+                            >
+                              FK{order.number}
+                            </a>
+                          </TableCell>
+                          <TableCell>{order.email}</TableCell>
+                          <TableCell>
+                            {/* {moment */}
+                            {new Date(order.orderCreated).toDateString()}
+                            {/* .format('DD/MM/YYYY')} */}
+                          </TableCell>
+                          <TableCell>
+                            <div className={classes.statusContainer}>
+                              <StatusBullet
+                                className={classes.status}
+                                color={statusColors[order.status]}
+                                size="sm"
+                              />
+                              {order.totalPrice}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
                   </TableBody>
                 </Table>
               </div>
