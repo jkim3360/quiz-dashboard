@@ -51,7 +51,7 @@ class ApiContextProvider extends Component {
 
     // quiz bundle discount orders from MongoDB
     let quizOrders = await axios.get(
-      'https://bespoke-backend.herokuapp.com/quiz-orders?apikey=AkZv1hWkkDH9W2sP9Q5WdX8L8u9lbWeO'
+      `https://bespoke-backend.herokuapp.com/quiz-orders?apikey=${REACT_APP_API_KEY}`
     );
 
     let quizOrdersArr = [];
@@ -241,7 +241,7 @@ class ApiContextProvider extends Component {
 
   fetchQuizOrders = async () => {
     const orders = await axios(
-      'https://bespoke-backend.herokuapp.com/quiz-orders?apikey=AkZv1hWkkDH9W2sP9Q5WdX8L8u9lbWeO'
+      `https://bespoke-backend.herokuapp.com/quiz-orders?apikey=${REACT_APP_API_KEY}`
     );
     const orderCount = orders.data.length;
     this.setState({
