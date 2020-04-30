@@ -4,12 +4,12 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import ErrorOutline from '@material-ui/icons/ErrorOutline';
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.error.dark,
     color: theme.palette.primary.contrastText
   },
   content: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     backgroundColor: theme.palette.white,
-    color: theme.palette.primary.main,
+    color: theme.palette.error.dark,
     height: 56,
     width: 56
   },
@@ -60,12 +60,13 @@ const TotalProfit = props => {
                 <Typography
                   color="inherit"
                   variant="h3"
-                />
-                {context.droppedQuizCount}
+                >
+                  {context.droppedQuizCount}
+                </Typography>
               </Grid>
               <Grid item>
                 <Avatar className={classes.avatar}>
-                  <AttachMoneyIcon className={classes.icon} />
+                  <ErrorOutline className={classes.icon} />
                 </Avatar>
               </Grid>
             </Grid>
