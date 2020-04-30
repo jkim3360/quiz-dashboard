@@ -60,9 +60,15 @@ const DropOffData = props => {
           24
         ],
         backgroundColor: [
-          theme.palette.primary.main,
-          theme.palette.error.main,
-          theme.palette.warning.main
+          theme.palette.secondary.light,
+          theme.palette.success.light,
+          theme.palette.warning.light,
+          theme.palette.error.light,
+          theme.palette.secondary.main,
+          theme.palette.success.dark,
+          theme.palette.warning.dark,
+          theme.palette.error.dark,
+          theme.palette.warning.dark
         ],
         borderWidth: 8,
         borderColor: theme.palette.white,
