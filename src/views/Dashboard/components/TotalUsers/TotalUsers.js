@@ -6,6 +6,7 @@ import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
 import { ApiContextConsumer } from '../../../../context/ApiContext';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,7 +68,11 @@ const TotalUsers = props => {
                 >
                   TOTAL USERS
                 </Typography>
-                <Typography variant="h3">{context.quizCount}</Typography>
+                <Typography variant="h3">
+                  {!context.quizCount
+                    ? <CircularProgress />
+                    : context.quizCount}
+                </Typography>
               </Grid>
               <Grid item>
                 <Avatar className={classes.avatar}>

@@ -1,11 +1,11 @@
 import React from 'react';
+import { ApiContextConsumer } from '../../../../context/ApiContext';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import EmailIcon from '@material-ui/icons/Email';
-import { ApiContextConsumer } from '../../../../context/ApiContext';
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ErrorOutline from '@material-ui/icons/ErrorOutline';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
-    backgroundColor: theme.palette.error.dark,
-    color: theme.palette.primary.contrastText
+    backgroundColor: theme.palette.error.white,
+    color: theme.palette.primary
   },
   content: {
     alignItems: 'center',
@@ -61,7 +62,11 @@ const TotalProfit = props => {
                   color="inherit"
                   variant="h3"
                 >
-                  {context.droppedQuizCount}
+                  {!context.droppedQuizCount ? (
+                    <CircularProgress />
+                  ) : (
+                    context.droppedQuizCount
+                  )}
                 </Typography>
               </Grid>
               <Grid item>

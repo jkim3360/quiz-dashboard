@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ApiContextConsumer } from '../../../../context/ApiContext';
 import clsx from 'clsx';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -55,89 +56,92 @@ const LatestOrders = props => {
 
   const classes = useStyles();
 
-  const [orders] = useState(mockData);
+  // const [orders] = useState(mockData);
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
-      <CardHeader
-        action={
-          <Button
-            color="primary"
-            size="small"
-            variant="outlined"
-          >
-            New entry
-          </Button>
-        }
-        title="Latest Orders"
-      />
-      <Divider />
-      <CardContent className={classes.content}>
-        <PerfectScrollbar>
-          <div className={classes.inner}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Order Ref</TableCell>
-                  <TableCell>Customer</TableCell>
-                  <TableCell sortDirection="desc">
-                    <Tooltip
-                      enterDelay={300}
-                      title="Sort"
-                    >
-                      <TableSortLabel
-                        active
-                        direction="desc"
-                      >
-                        Date
-                      </TableSortLabel>
-                    </Tooltip>
-                  </TableCell>
-                  <TableCell>Status</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {orders.map(order => (
-                  <TableRow
-                    hover
-                    key={order.id}
-                  >
-                    <TableCell>{order.ref}</TableCell>
-                    <TableCell>{order.customer.name}</TableCell>
-                    <TableCell>
-                      {moment(order.createdAt).format('DD/MM/YYYY')}
-                    </TableCell>
-                    <TableCell>
-                      <div className={classes.statusContainer}>
-                        <StatusBullet
-                          className={classes.status}
-                          color={statusColors[order.status]}
-                          size="sm"
-                        />
-                        {order.status}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </PerfectScrollbar>
-      </CardContent>
-      <Divider />
-      <CardActions className={classes.actions}>
-        <Button
-          color="primary"
-          size="small"
-          variant="text"
+    <ApiContextConsumer>
+      {context => (
+        <Card
+          {...rest}
+          className={clsx(classes.root, className)}
         >
-          View all <ArrowRightIcon />
-        </Button>
-      </CardActions>
-    </Card>
+          <CardHeader
+            
+            title="Latest Orders"
+          />
+          <Divider />
+          <CardContent className={classes.content}>
+            <PerfectScrollbar>
+              <div className={classes.inner}>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Order No.</TableCell>
+                      <TableCell>Customer</TableCell>
+                      <TableCell sortDirection="desc">
+                        <Tooltip
+                          enterDelay={300}
+                          title="Sort"
+                        >
+                          <TableSortLabel
+                            active
+                            direction="desc"
+                          >
+                            Date
+                          </TableSortLabel>
+                        </Tooltip>
+                      </TableCell>
+                      <TableCell>Price</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {context.quizOrdersArr.reverse().slice(0, 10).map(order => (
+                      <TableRow
+                        hover
+                        key={order.number}
+                      >
+                        <TableCell><a
+              href={`https://fekkaibrands.myshopify.com/admin/orders/${order.orderId}`}
+              style={{ textDecoration: "none", color: "black" }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >FK{order.number}</a></TableCell>
+                        <TableCell>{order.email}</TableCell>
+                        <TableCell>
+                          {/* {moment */}
+                          {new Date(order.orderCreated).toDateString()}
+                          {/* .format('DD/MM/YYYY')} */}
+                        </TableCell>
+                        <TableCell>
+                          <div className={classes.statusContainer}>
+                            <StatusBullet
+                              className={classes.status}
+                              color={statusColors[order.status]}
+                              size="sm"
+                            />
+                            {order.totalPrice}
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </PerfectScrollbar>
+          </CardContent>
+          <Divider />
+          <CardActions className={classes.actions}>
+            <Button
+              color="primary"
+              size="small"
+              variant="text"
+            >
+              View all <ArrowRightIcon />
+            </Button>
+          </CardActions>
+        </Card>
+      )}
+    </ApiContextConsumer>
   );
 };
 

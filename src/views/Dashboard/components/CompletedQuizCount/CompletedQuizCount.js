@@ -1,15 +1,16 @@
 import React from 'react';
+import { ApiContextConsumer } from '../../../../context/ApiContext';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { ApiContextConsumer } from '../../../../context/ApiContext';
 import {
   Card,
   CardContent,
   Grid,
   Typography,
   Avatar,
-  LinearProgress
+  LinearProgress,
+  CircularProgress
 } from '@material-ui/core';
 import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
 
@@ -66,10 +67,15 @@ const CompletedQuizCount = props => {
                   COMPLETED QUIZ CONVERSION
                 </Typography>
                 <Typography variant="h3">
-                  {context.completedQuizCount +
+                  {!context.completedQuizCount &&
+                  !context.completedQuizCount ? (
+                      <CircularProgress />
+                    ) : (
+                      context.completedQuizCount +
                     ' / ' +
                     (context.completedConversion * 100).toFixed(2) +
-                    '%'}
+                    '%'
+                    )}
                 </Typography>
               </Grid>
               <Grid item>

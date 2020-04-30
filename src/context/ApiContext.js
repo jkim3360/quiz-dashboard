@@ -22,12 +22,14 @@ class ApiContextProvider extends Component {
     hair_thickness: null,
     hair_condition: null,
     hair_goals: null,
-    weather: null
+    weather: null,
+    quizOrdersArr: []
   };
 
   async componentDidMount() {
-    this.fetchKlaviyoEmails();
-    this.fetchUserData();
+    // this.fetchKlaviyoEmails();
+    this.fetchShopifyOrders();
+    // this.fetchUserData();
 
     // localStorage.setItem('userData', JSON.stringify(userData));
   }
@@ -39,6 +41,97 @@ class ApiContextProvider extends Component {
     this.setState({
       emailCount: klaviyoEmails.data.total_quiz_emails
     });
+  };
+
+  fetchShopifyOrders = async () => {
+    // orders from Shopify admin API
+    // let fekkaiOrders = await axios(
+    //   `https://bespoke-backend.herokuapp.com/fekkai?apikey=AkZv1hWkkDH9W2sP9Q5WdX8L8u9lbWeO`
+    // );
+
+    // quiz bundle discount orders from MongoDB
+    let quizOrders = await axios.get(
+      'https://bespoke-backend.herokuapp.com/quiz-orders?apikey=AkZv1hWkkDH9W2sP9Q5WdX8L8u9lbWeO'
+    );
+
+    let quizOrdersArr = [];
+    for (let order of quizOrders.data) {
+      let orderObj = {
+        orderId: order.order_id,
+        number: order.number,
+        email: order.email,
+        orderCreated: order.order_created,
+        totalPrice: order.total_price
+      };
+      quizOrdersArr.push(orderObj);
+    }
+    this.setState({
+      quizOrdersArr
+    });
+    console.log(quizOrdersArr);
+    // console.log(quizOrders.data.length);
+    // // find all order dates from mongo as unique identifiers
+    // const orderIds = [];
+    // for (let order of quizOrders.data) {
+    //   orderIds.push(order.order_id);
+    // }
+
+    // // search for new bundle discount orders (chat quiz)
+    // for (let order of fekkaiOrders.data) {
+    //   let orderDate = new Date(order.created_at);
+    //   let today = new Date();
+
+    //   let lineItemsArr = [];
+    //   let discountApplications = [];
+
+    //   for (let i = 0; i < order.discount_applications.length; i++) {
+    //     let discountApplication =
+    //       order &&
+    //       order.discount_applications[i] &&
+    //       order.discount_applications[i].title;
+    //     if (
+    //       // check for today
+    //       orderDate.getMonth() === today.getMonth() &&
+    //       orderDate.getDate() === today.getDate() &&
+    //       discountApplication === 'Discount Bundle' &&
+    //       //  check if new order exists in mongo through unique identifer
+    //       orderIds.includes(order.id) === false
+    //     ) {
+    //       console.log(
+    //         orderIds.includes(order.id),
+    //         order.id,
+    //         order.created,
+    //         order.discount_applications,
+    //         order.email,
+    //         order.total_price
+    //       );
+    //       discountApplications.push(discountApplication);
+    //       for (let i = 0; i < order.line_items.length; i++) {
+    //         const lineItems =
+    //           order.line_items[i].title +
+    //           ',  qty: ' +
+    //           order.line_items[i].quantity.toString();
+    //         lineItemsArr.push(lineItems);
+    //       }
+    //       const orderObj = {
+    //         line_items: lineItemsArr,
+    //         discount_applications: discountApplications,
+    //         order_id: order.id,
+    //         order_created: order.created_at,
+    //         number: parseInt(order.number),
+    //         email: order.email,
+    //         total_price: order.total_price
+    //       };
+    // axios.post(
+    //   "http://bespoke-backend.herokuapp.com/quiz-orders?apikey=AkZv1hWkkDH9W2sP9Q5WdX8L8u9lbWeO",
+    //   orderObj
+    // );
+    //     console.log('order id not found. posting to db!!');
+    //   }
+    //   // break to prevent posting lineItems more than once
+    //   break;
+    // }
+    // }
   };
 
   fetchUserData = async () => {
