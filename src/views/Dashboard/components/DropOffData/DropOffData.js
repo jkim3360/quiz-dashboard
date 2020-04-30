@@ -1,4 +1,5 @@
 import React from 'react';
+import { ApiContextConsumer } from '../../../../context/ApiContext';
 import { Doughnut } from 'react-chartjs-2';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -38,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UsersByDevice = props => {
+const DropOffData = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
@@ -47,7 +48,17 @@ const UsersByDevice = props => {
   const data = {
     datasets: [
       {
-        data: [63, 15, 22],
+        data: [
+          props.drop_email,
+          props.front_selfie,
+          props.no_front_selfie_edit,
+          props.front_selfie_edit,
+          props.hair_thickness,
+          props.hair_condition,
+          props.hair_goals,
+          props.weather,
+          24
+        ],
         backgroundColor: [
           theme.palette.primary.main,
           theme.palette.error.main,
@@ -58,7 +69,17 @@ const UsersByDevice = props => {
         hoverBorderColor: theme.palette.white
       }
     ],
-    labels: ['Desktop', 'Tablet', 'Mobile']
+    labels: [
+      'Name/Email',
+      'Selfie',
+      'No Selfie/Answering',
+      'Selfie/Correcting',
+      'Thickness',
+      'Conditions',
+      'Goals',
+      'Geofactors',
+      'test'
+    ]
   };
 
   const options = {
@@ -67,7 +88,7 @@ const UsersByDevice = props => {
     },
     responsive: true,
     maintainAspectRatio: false,
-    animation: false,
+    animation: true,
     cutoutPercentage: 80,
     layout: { padding: 0 },
     tooltips: {
@@ -105,50 +126,54 @@ const UsersByDevice = props => {
   ];
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
-      <CardHeader
-        action={
-          <IconButton size="small">
-            <RefreshIcon />
-          </IconButton>
-        }
-        title="Users By Device"
-      />
-      <Divider />
-      <CardContent>
-        <div className={classes.chartContainer}>
-          <Doughnut
-            data={data}
-            options={options}
+    <ApiContextConsumer>
+      {context => (
+        <Card
+          {...rest}
+          className={clsx(classes.root, className)}
+        >
+          <CardHeader
+            action={
+              <IconButton size="small">
+                <RefreshIcon />
+              </IconButton>
+            }
+            title="QUIZ DROP OFF DATA"
           />
-        </div>
-        <div className={classes.stats}>
-          {devices.map(device => (
-            <div
-              className={classes.device}
-              key={device.title}
-            >
-              <span className={classes.deviceIcon}>{device.icon}</span>
-              <Typography variant="body1">{device.title}</Typography>
-              <Typography
-                style={{ color: device.color }}
-                variant="h2"
-              >
-                {device.value}%
-              </Typography>
+          <Divider />
+          <CardContent>
+            <div className={classes.chartContainer}>
+              <Doughnut
+                data={data}
+                options={options}
+              />
             </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+            <div className={classes.stats}>
+              {devices.map(device => (
+                <div
+                  className={classes.device}
+                  key={device.title}
+                >
+                  <span className={classes.deviceIcon}>{device.icon}</span>
+                  <Typography variant="body1">{device.title}</Typography>
+                  <Typography
+                    style={{ color: device.color }}
+                    variant="h2"
+                  >
+                    {device.value}%
+                  </Typography>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </ApiContextConsumer>
   );
 };
 
-UsersByDevice.propTypes = {
+DropOffData.propTypes = {
   className: PropTypes.string
 };
 
-export default UsersByDevice;
+export default DropOffData;
