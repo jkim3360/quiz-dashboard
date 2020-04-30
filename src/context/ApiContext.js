@@ -27,9 +27,9 @@ class ApiContextProvider extends Component {
   };
 
   async componentDidMount() {
-    // this.fetchKlaviyoEmails();
+    this.fetchKlaviyoEmails();
     this.fetchShopifyOrders();
-    // this.fetchUserData();
+    this.fetchUserData();
 
     // localStorage.setItem('userData', JSON.stringify(userData));
   }
@@ -68,7 +68,7 @@ class ApiContextProvider extends Component {
     this.setState({
       quizOrdersArr
     });
-    console.log(quizOrdersArr);
+    // console.log(quizOrdersArr);
     // console.log(quizOrders.data.length);
     // // find all order dates from mongo as unique identifiers
     // const orderIds = [];

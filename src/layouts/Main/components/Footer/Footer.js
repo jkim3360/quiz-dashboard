@@ -28,12 +28,10 @@ const Footer = props => {
           target="_blank"
         >
           Fekkai
-        </Link>
-        {" "}2020
+        </Link>{' '}
+        2020
       </Typography>
-      <Typography variant="caption">
-        Salon hair gone clean.
-      </Typography>
+      <Typography variant="caption">Salon hair gone clean.</Typography>
     </div>
   );
 };
