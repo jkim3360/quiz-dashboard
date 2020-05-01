@@ -15,6 +15,7 @@ import {
   ListItemText,
   IconButton
 } from '@material-ui/core';
+import UsersTable from '../../../UserList/components/UsersTable'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 

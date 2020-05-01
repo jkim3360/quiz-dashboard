@@ -46,35 +46,40 @@ const DropOffData = props => {
   const theme = useTheme();
 
   let quizAnalytics;
-  if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
+
+  if (localStorage.getItem('quizAnalytics')) {
     quizAnalytics = JSON.parse(localStorage.getItem('quizAnalytics'));
+    console.log(quizAnalytics);
   }
-
-  const {
-    dropEmail,
-    droppedAfterSelfie,
-    droppedNoSelfieCorrecting,
-    droppedSelfieCorrecting,
-    droppedHairThickness,
-    droppedHairCondition,
-    droppedHairGoals,
-    droppedGeofactors
-  } = quizAnalytics;
-
-  console.log(quizAnalytics);
 
   const data = {
     datasets: [
       {
         data: [
-          props.drop_email,
-          props.front_selfie,
-          props.no_front_selfie_edit,
-          props.front_selfie_edit,
-          props.hair_thickness,
-          props.hair_condition,
-          props.hair_goals,
-          props.weather,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.dropEmail)
+            : props.drop_email,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.droppedAfterSelfie)
+            : props.front_selfie,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.droppedNoSelfieCorrecting)
+            : props.no_front_selfie_edit,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.droppedSelfieCorrecting)
+            : props.front_selfie_edit,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.droppedHairThickness)
+            : props.hair_thickness,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.droppedHairCondition)
+            : props.hair_condition,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.droppedHairGoals)
+            : props.hair_goals,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.droppedGeofactors)
+            : props.weather,
           24
         ],
         backgroundColor: [

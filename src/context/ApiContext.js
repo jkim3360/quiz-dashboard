@@ -139,7 +139,7 @@ class ApiContextProvider extends Component {
       'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/dev-backend-obdyi/service/Zapier/incoming_webhook/webhook0'
     );
 
-    console.log(JSON.stringify(userData));
+    // console.log(JSON.stringify(userData));
 
     const quizCount = userData.data.length;
     let complete = 0;
@@ -156,6 +156,7 @@ class ApiContextProvider extends Component {
     let hair_condition = 0;
     let hair_goals = 0;
     let weather = 0;
+    let userCodes = [];
 
     for (let user of userData.data) {
       if (user.user_data.compute === true) {
@@ -205,19 +206,37 @@ class ApiContextProvider extends Component {
       else if (!user.user_data.answers.hair_goals) hair_goals++;
       // user did not finish quiz at end - same as compute false
       else if (!user.user_data.answers.weather) weather++;
-    }
-    console.log(
-      drop_email,
-      front_selfie,
-      no_front_selfie_edit,
-      front_selfie_edit,
-      hair_thickness,
-      hair_condition,
-      hair_goals,
-      weather
-    );
 
-    await this.fetchQuizOrders();
+      userCodes.push(user.user_code);
+    }
+    localStorage.setItem('userCodes', JSON.stringify(userCodes));
+    this.setState({
+      userCodes
+    })
+    
+
+    // console.log(
+    //   drop_email,
+    //   front_selfie,
+    //   no_front_selfie_edit,
+    //   front_selfie_edit,
+    //   hair_thickness,
+    //   hair_condition,
+    //   hair_goals,
+    //   weather
+    // );
+
+    const fetchQuizOrders = async () => {
+      const orders = await axios(
+        `https://bespoke-backend.herokuapp.com/quiz-orders?apikey=${REACT_APP_API_KEY}`
+      );
+      const orderCount = orders.data.length;
+      this.setState({
+        orderCount
+      });
+    };
+
+    await fetchQuizOrders();
 
     const { orderCount } = this.state;
     this.setState({
@@ -236,7 +255,6 @@ class ApiContextProvider extends Component {
       hair_goals,
       weather
     });
-    console.log(this.state.completedConversion);
 
     const { emailCount, quizOrdersArr } = this.state;
 
@@ -251,9 +269,12 @@ class ApiContextProvider extends Component {
         ((quizOrdersArr.length / completedQuizCount) * 100).toFixed(2) + '%',
       totalConversion:
         ((quizOrdersArr.length / quizCount) * 100).toFixed(2) + '%',
-        droppedQuizCount: droppedQuizCount,
+      droppedQuizCount: droppedQuizCount,
       dropEmail:
-      drop_email + ' (' + ((drop_email / droppedQuizCount) * 100).toFixed(2) + '%)',
+        drop_email +
+        ' (' +
+        ((drop_email / droppedQuizCount) * 100).toFixed(2) +
+        '%)',
       droppedAfterSelfie:
         front_selfie +
         ' (' +
@@ -280,29 +301,20 @@ class ApiContextProvider extends Component {
         ((hair_condition / droppedQuizCount) * 100).toFixed(2) +
         '%)',
       droppedHairGoals:
-        hair_goals + ' (' + ((hair_goals / droppedQuizCount) * 100).toFixed(2) + '%)',
+        hair_goals +
+        ' (' +
+        ((hair_goals / droppedQuizCount) * 100).toFixed(2) +
+        '%)',
       droppedGeofactors:
         weather + ' (' + ((weather / droppedQuizCount) * 100).toFixed(2) + '%)'
     };
     localStorage.setItem('quizAnalytics', JSON.stringify(quizAnalytics));
 
-   if (localStorage.getItem('quizAnalytics')) {
-     this.setState({
-       quizAnalytics: JSON.parse(localStorage.getItem('quizAnalytics'))
-     })
-   }
-
-  };
-
-  fetchQuizOrders = async () => {
-    const orders = await axios(
-      `https://bespoke-backend.herokuapp.com/quiz-orders?apikey=${REACT_APP_API_KEY}`
-    );
-    const orderCount = orders.data.length;
-    this.setState({
-      orderCount
-    });
-    console.log(orderCount);
+    if (localStorage.getItem('quizAnalytics')) {
+      this.setState({
+        quizAnalytics: JSON.parse(localStorage.getItem('quizAnalytics')),
+      });
+    }
   };
 
   render() {

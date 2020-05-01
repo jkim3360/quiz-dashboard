@@ -98,7 +98,7 @@ const Dashboard = () => {
               item
               lg={6}
               md={6}
-              xl={6}
+              xl={5}
               xs={12}
             >
               <LatestProducts />
@@ -107,7 +107,7 @@ const Dashboard = () => {
               item
               lg={6}
               md={12}
-              xl={6}
+              xl={7}
               xs={12}
             >
               <LatestOrders />

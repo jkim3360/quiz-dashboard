@@ -45,10 +45,9 @@ const CompletedQuizCount = props => {
 
   const classes = useStyles();
 
-  let completedConversion;
+  let quizAnalytics;
   if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
-    completedConversion = JSON.parse(localStorage.getItem('quizAnalytics'))
-      .completedConversion;
+    quizAnalytics = JSON.parse(localStorage.getItem('quizAnalytics'));
   }
 
   return (
@@ -73,8 +72,8 @@ const CompletedQuizCount = props => {
                   CONVERSION
                 </Typography>
                 <Typography variant="h3">
-                  {!context.completedQuizCount && !context.completedQuizCount
-                    ? completedConversion || <CircularProgress />
+                  {!context.completedQuizCount && !context.completedQuizCount 
+                    ? quizAnalytics ? quizAnalytics.completedConversion : <CircularProgress />
                     : (context.completedConversion * 100).toFixed(2) + '%'}
                 </Typography>
               </Grid>
@@ -93,8 +92,14 @@ const CompletedQuizCount = props => {
               className={classes.caption}
               variant="caption"
             >
-              {context.completedQuizCount} out of {context.quizCount} users
-              completed quiz
+              {localStorage.getItem('quizAnalytics')
+                ? quizAnalytics.completed
+                : context.completedQuizCount}{' '}
+              out of{' '}
+              {localStorage.getItem('quizAnalytics')
+                ? quizAnalytics.quizCount
+                : context.quizCount}{' '}
+              users completed quiz
             </Typography>
           </CardContent>
         </Card>
