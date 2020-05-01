@@ -13,8 +13,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserList = () => {
+const UserList = props => {
   const classes = useStyles();
+
+  let userListdata = localStorage.getItem('userListData')
+    ? localStorage.getItem('userListData')
+    : props.userListData;
+  console.log(userListdata);
+
+  // for (let i = 0; i < props.userListData.length; i++) {
+
+  // }
 
   const [users] = useState(mockData);
 

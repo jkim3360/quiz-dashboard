@@ -23,7 +23,9 @@ class ApiContextProvider extends Component {
     hair_condition: null,
     hair_goals: null,
     weather: null,
-    quizOrdersArr: []
+    quizOrdersArr: [],
+    userCodes: [],
+    userListData: []
   };
 
   async componentDidMount() {
@@ -157,6 +159,7 @@ class ApiContextProvider extends Component {
     let hair_goals = 0;
     let weather = 0;
     let userCodes = [];
+    let userListData = [];
 
     for (let user of userData.data) {
       if (user.user_data.compute === true) {
@@ -208,12 +211,21 @@ class ApiContextProvider extends Component {
       else if (!user.user_data.answers.weather) weather++;
 
       userCodes.push(user.user_code);
+
+      // for User List View
+      if (user.created > '2020-03-20T00:00:00') {
+        userListData.push(user);
+      }
     }
     localStorage.setItem('userCodes', JSON.stringify(userCodes));
+    localStorage.setItem(
+      'userListData',
+      JSON.stringify(userListData.slice(0, userListData.length / 2))
+    );
     this.setState({
-      userCodes
-    })
-    
+      userCodes,
+      userListData
+    });
 
     // console.log(
     //   drop_email,
@@ -312,7 +324,7 @@ class ApiContextProvider extends Component {
 
     if (localStorage.getItem('quizAnalytics')) {
       this.setState({
-        quizAnalytics: JSON.parse(localStorage.getItem('quizAnalytics')),
+        quizAnalytics: JSON.parse(localStorage.getItem('quizAnalytics'))
       });
     }
   };
