@@ -16,22 +16,39 @@ const useStyles = makeStyles(theme => ({
 const UserList = props => {
   const classes = useStyles();
 
-  let userListdata = localStorage.getItem('userListData')
-    ? localStorage.getItem('userListData')
-    : props.userListData;
-  console.log(userListdata);
+  let userListData = localStorage.getItem('userListData')
+    ? JSON.parse(localStorage.getItem('userListData'))
+    : JSON.parse(props.userListData);
+  console.log(userListData);
 
-  // for (let i = 0; i < props.userListData.length; i++) {
+  let users = [];
 
-  // }
+  for (let i = 0; i < userListData.length; i++) {
+    let userObj = {
+      userCode: userListData[i].user_code ? userListData[i].user_code : '',
+      created: userListData[i].created ? userListData[i].created : '',
+      selfie: userListData[i].user_data.front_selfie
+        ? userListData[i].user_data.front_selfie
+        : '',
+      name: userListData[i].user_data.name,
+      email: userListData[i].user_data.email
+        ? userListData[i].user_data.email
+        : '',
+      city: userListData[i].user_data.weather
+        ? userListData[i].user_data.weather &&
+          userListData[i].user_data.weather.city
+        : ''
+    };
+    users.push(userObj);
+  }
 
-  const [users] = useState(mockData);
+  // const [users] = useState(mockData);
 
   return (
     <div className={classes.root}>
       <UsersToolbar />
       <div className={classes.content}>
-        <UsersTable users={users} />
+        <UsersTable users={users.reverse()} />
       </div>
     </div>
   );
