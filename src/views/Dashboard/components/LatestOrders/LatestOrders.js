@@ -117,11 +117,7 @@ const LatestOrders = props => {
                           </TableCell>
                           <TableCell>
                             <div className={classes.statusContainer}>
-                              <StatusBullet
-                                className={classes.status}
-                                color={statusColors[order.status]}
-                                size="sm"
-                              />
+                             
                               {order.totalPrice}
                             </div>
                           </TableCell>
