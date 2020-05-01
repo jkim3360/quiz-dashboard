@@ -66,7 +66,7 @@ class ApiContextProvider extends Component {
       quizOrdersArr.push(orderObj);
     }
     this.setState({
-      quizOrdersArr
+      quizOrdersArr: quizOrdersArr.reverse()
     });
     // console.log(quizOrdersArr);
     // console.log(quizOrders.data.length);

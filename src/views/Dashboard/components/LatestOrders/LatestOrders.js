@@ -92,7 +92,7 @@ const LatestOrders = props => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {context.quizOrdersArr.reverse()
+                    {context.quizOrdersArr
                       .slice(0, 7)
                       .map(order => (
                         <TableRow
