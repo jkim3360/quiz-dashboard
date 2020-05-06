@@ -53,11 +53,11 @@ const Sidebar = props => {
       href: '/users',
       icon: <PeopleIcon />
     },
-    // {
-    //   title: 'Products',
-    //   href: '/products',
-    //   icon: <ShoppingBasketIcon />
-    // },
+    {
+      title: 'Products',
+      href: '/line-items',
+      icon: <ShoppingBasketIcon />
+    },
     // {
     //   title: 'Authentication',
     //   href: '/sign-in',

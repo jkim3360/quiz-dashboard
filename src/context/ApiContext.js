@@ -37,7 +37,6 @@ class ApiContextProvider extends Component {
     this.fetchKlaviyoEmails();
     this.fetchShopifyOrders();
     this.fetchUserData();
-
     // localStorage.setItem('userData', JSON.stringify(userData));s
   }
 
