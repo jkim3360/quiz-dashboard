@@ -81,8 +81,8 @@ const LatestOrders = props => {
                           title="Sort"
                         >
                           <TableSortLabel
-                            active
-                            direction="desc"
+                            // active
+                            // direction="desc"
                           >
                             Date
                           </TableSortLabel>
