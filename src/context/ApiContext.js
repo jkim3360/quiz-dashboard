@@ -30,7 +30,8 @@ class ApiContextProvider extends Component {
     quizOrdersArr: [],
     userCodes: [],
     userListData: [],
-    variants: []
+    variants: [],
+    totalSales: 0
   };
 
   async componentDidMount() {
@@ -60,8 +61,10 @@ class ApiContextProvider extends Component {
       apiPrefix + `quiz-orders?apikey=${REACT_APP_API_KEY}`
     );
 
+    let totalSales = 0;
     let quizOrdersArr = [];
     for (let order of quizOrdersRes.data) {
+      totalSales += order.total_price;
       let orderObj = {
         orderId: order.order_id,
         number: order.number,
@@ -111,7 +114,8 @@ class ApiContextProvider extends Component {
     console.log(variants);
     this.setState({
       quizOrdersArr: quizOrdersArr.reverse(),
-      variants
+      variants,
+      totalSales
     });
 
     // console.log(quizOrdersArr);

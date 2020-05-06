@@ -10,6 +10,7 @@ import {
   TotalProfit,
   LatestSales,
   DropOffData,
+  DropOffDataBar,
   LineItemsSold,
   LatestOrders
 } from './components';
@@ -67,21 +68,12 @@ const Dashboard = () => {
             >
               <TotalProfit />
             </Grid>
+
             <Grid
               item
-              lg={6}
-              md={12}
-              xl={6}
-              xs={12}
-            >
-              {/* <LatestSales /> */}
-              <LatestOrders />
-            </Grid>
-            <Grid
-              item
-              lg={6}
-              md={6}
-              xl={6}
+              lg={4}
+              md={4}
+              xl={4}
               xs={12}
             >
               <DropOffData
@@ -97,16 +89,21 @@ const Dashboard = () => {
             </Grid>
             <Grid
               item
+              lg={8}
+              md={8}
+              xl={8}
+              xs={12}
+            >
+              <DropOffDataBar />
+              {/* <LatestSales /> */}
+            </Grid>
+            <Grid
+              item
               lg={6}
               md={6}
               xl={6}
               xs={12}
-            >
-              <LineItemsSold
-                lineItems={context.lineItems}
-                variants={context.variants}
-              />
-            </Grid>
+            />
             <Grid
               item
               lg={6}

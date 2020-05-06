@@ -57,7 +57,6 @@ const LatestOrders = props => {
   const classes = useStyles();
 
   // const [orders] = useState(mockData);
-
   return (
     <ApiContextConsumer>
       {context => (
@@ -80,10 +79,7 @@ const LatestOrders = props => {
                           enterDelay={300}
                           title="Sort"
                         >
-                          <TableSortLabel
-                            // active
-                            // direction="desc"
-                          >
+                          <TableSortLabel >
                             Date
                           </TableSortLabel>
                         </Tooltip>
@@ -92,7 +88,7 @@ const LatestOrders = props => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {context.quizOrdersArr.slice(0, 7).map(order => (
+                    {context.quizOrdersArr.slice(0).map(order => (
                       <TableRow
                         hover
                         key={order.number}

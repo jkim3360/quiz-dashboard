@@ -6,3 +6,5 @@ export { default as CompletedQuizCount } from './CompletedQuizCount';
 export { default as TotalProfit } from './TotalProfit';
 export { default as TotalUsers } from './TotalUsers';
 export { default as DropOffData } from './DropOffData';
+export { default as DropOffDataBar } from './DropOffDataBar';
+

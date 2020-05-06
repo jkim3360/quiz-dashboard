@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApiContextConsumer } from '../../../../context/ApiContext';
-import { Doughnut } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/styles';
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DropOffData = props => {
+const DropOffDataBar = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
@@ -169,7 +169,7 @@ const DropOffData = props => {
           <Divider />
           <CardContent>
             <div className={classes.chartContainer}>
-              <Doughnut
+              <HorizontalBar
                 data={data}
                 options={options}
               />
@@ -198,8 +198,8 @@ const DropOffData = props => {
   );
 };
 
-DropOffData.propTypes = {
+DropOffDataBar.propTypes = {
   className: PropTypes.string
 };
 
-export default DropOffData;
+export default DropOffDataBar;
