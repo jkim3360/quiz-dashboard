@@ -175,7 +175,7 @@ const UsersTable = props => {
           onChangeRowsPerPage={handleRowsPerPageChange}
           page={page}
           rowsPerPage={rowsPerPage}
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 25, 50, 100]}
         />
       </CardActions>
     </Card>

@@ -10,7 +10,7 @@ import {
   TotalProfit,
   LatestSales,
   DropOffData,
-  LatestProducts,
+  LineItemsSold,
   LatestOrders
 } from './components';
 
@@ -69,48 +69,52 @@ const Dashboard = () => {
             </Grid>
             <Grid
               item
-              lg={8}
+              lg={6}
               md={12}
-              xl={9}
+              xl={6}
               xs={12}
             >
-              <LatestSales />
+              {/* <LatestSales /> */}
+              <LatestOrders />
             </Grid>
             <Grid
               item
-              lg={4}
+              lg={6}
               md={6}
-              xl={3}
+              xl={6}
               xs={12}
             >
               <DropOffData
-              drop_email={context.drop_email}
-              front_selfie={context.front_selfie}
-              no_front_selfie_edit={context.no_front_selfie_edit}
-              front_selfie_edit={context.front_selfie_edit}
-              hair_thickness={context.hair_thickness}
-              hair_condition={context.hair_condition}
-              hair_goals={context.hair_goals}
-              weather={context.weather}
+                drop_email={context.drop_email}
+                front_selfie={context.front_selfie}
+                front_selfie_edit={context.front_selfie_edit}
+                hair_condition={context.hair_condition}
+                hair_goals={context.hair_goals}
+                hair_thickness={context.hair_thickness}
+                no_front_selfie_edit={context.no_front_selfie_edit}
+                weather={context.weather}
               />
             </Grid>
             <Grid
               item
               lg={6}
               md={6}
-              xl={5}
+              xl={6}
               xs={12}
             >
-              <LatestProducts />
+              <LineItemsSold
+                lineItems={context.lineItems}
+                variants={context.variants}
+              />
             </Grid>
             <Grid
               item
               lg={6}
-              md={12}
-              xl={7}
-              xs={12}
+              md={6}
+              xl={6}
+              xs={6}
             >
-              <LatestOrders />
+              {/* <LatestOrders /> */}
             </Grid>
           </Grid>
         </div>

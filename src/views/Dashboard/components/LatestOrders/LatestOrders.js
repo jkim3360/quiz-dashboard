@@ -92,37 +92,34 @@ const LatestOrders = props => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {context.quizOrdersArr
-                      .slice(0, 7)
-                      .map(order => (
-                        <TableRow
-                          hover
-                          key={order.number}
-                        >
-                          <TableCell>
-                            <a
-                              href={`https://fekkaibrands.myshopify.com/admin/orders/${order.orderId}`}
-                              rel="noopener noreferrer"
-                              style={{ textDecoration: 'none', color: 'black' }}
-                              target="_blank"
-                            >
-                              FK{order.number}
-                            </a>
-                          </TableCell>
-                          <TableCell>{order.email}</TableCell>
-                          <TableCell>
-                            {/* {moment */}
-                            {new Date(order.orderCreated).toDateString()}
-                            {/* .format('DD/MM/YYYY')} */}
-                          </TableCell>
-                          <TableCell>
-                            <div className={classes.statusContainer}>
-                             
-                              {order.totalPrice}
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                    {context.quizOrdersArr.slice(0, 7).map(order => (
+                      <TableRow
+                        hover
+                        key={order.number}
+                      >
+                        <TableCell>
+                          <a
+                            href={`https://fekkaibrands.myshopify.com/admin/orders/${order.orderId}`}
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: 'none', color: 'black' }}
+                            target="_blank"
+                          >
+                            FK{order.number}
+                          </a>
+                        </TableCell>
+                        <TableCell>{order.email}</TableCell>
+                        <TableCell>
+                          {/* {moment */}
+                          {new Date(order.orderCreated).toDateString()}
+                          {/* .format('DD/MM/YYYY')} */}
+                        </TableCell>
+                        <TableCell>
+                          <div className={classes.statusContainer}>
+                            {order.totalPrice}
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
                   </TableBody>
                 </Table>
               </div>
@@ -135,7 +132,7 @@ const LatestOrders = props => {
               size="small"
               variant="text"
             >
-              View all <ArrowRightIcon />
+              {/* View all <ArrowRightIcon /> */}
             </Button>
           </CardActions>
         </Card>

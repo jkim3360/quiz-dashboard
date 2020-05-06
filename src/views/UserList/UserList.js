@@ -16,9 +16,11 @@ const useStyles = makeStyles(theme => ({
 const UserList = props => {
   const classes = useStyles();
 
-  let userListData = localStorage.getItem('userListData')
+  let userListData = 
+  localStorage.getItem('userListData')
     ? JSON.parse(localStorage.getItem('userListData'))
-    : JSON.parse(props.userListData);
+    : 
+    props.userListData;
   console.log(userListData);
 
   let users = [];
@@ -48,7 +50,7 @@ const UserList = props => {
     <div className={classes.root}>
       <UsersToolbar />
       <div className={classes.content}>
-        <UsersTable users={users.reverse()} />
+        <UsersTable users={users} />
       </div>
     </div>
   );

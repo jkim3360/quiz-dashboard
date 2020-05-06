@@ -49,7 +49,6 @@ const DropOffData = props => {
 
   if (localStorage.getItem('quizAnalytics')) {
     quizAnalytics = JSON.parse(localStorage.getItem('quizAnalytics'));
-    console.log(quizAnalytics);
   }
 
   const data = {
