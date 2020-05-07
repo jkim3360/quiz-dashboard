@@ -55,10 +55,10 @@ const Sidebar = props => {
       icon: <PeopleIcon />
     },
     {
-      title: 'Latest Sales',
+      title: 'Sales',
       href: '/line-items',
       icon: <ReceiptIcon />
-    },
+    }
     // {
     //   title: 'Authentication',
     //   href: '/sign-in',

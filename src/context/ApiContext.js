@@ -57,6 +57,9 @@ class ApiContextProvider extends Component {
     // );
 
     // quiz bundle discount orders from MongoDB
+    let fekkaiOrders = await axios(
+      apiPrefix + `fekkai?apikey=${REACT_APP_API_KEY}`
+    );
     let quizOrdersRes = await axios.get(
       apiPrefix + `quiz-orders?apikey=${REACT_APP_API_KEY}`
     );
@@ -118,71 +121,69 @@ class ApiContextProvider extends Component {
       totalSales
     });
 
-    // console.log(quizOrdersArr);
-    // console.log(quizOrders.data.length);
-    // // find all order dates from mongo as unique identifiers
-    // const orderIds = [];
-    // for (let order of quizOrders.data) {
-    //   orderIds.push(order.order_id);
-    // }
+    console.log(quizOrdersRes.data.length);
+    // find all order dates from mongo as unique identifiers
+    const orderIds = [];
+    for (let order of quizOrdersRes.data) {
+      orderIds.push(order.order_id);
+    }
 
-    // // search for new bundle discount orders (chat quiz)
-    // for (let order of fekkaiOrders.data) {
-    //   let orderDate = new Date(order.created_at);
-    //   let today = new Date();
+    // search for new bundle discount orders (chat quiz)
+    for (let order of fekkaiOrders.data) {
+      let orderDate = new Date(order.created_at);
+      let today = new Date();
 
-    //   let lineItemsArr = [];
-    //   let discountApplications = [];
+      let lineItemsArr = [];
+      let discountApplications = [];
 
-    //   for (let i = 0; i < order.discount_applications.length; i++) {
-    //     let discountApplication =
-    //       order &&
-    //       order.discount_applications[i] &&
-    //       order.discount_applications[i].title;
-    //     if (
-    //       // check for today
-    //       orderDate.getMonth() === today.getMonth() &&
-    //       orderDate.getDate() === today.getDate() &&
-    //       discountApplication === 'Discount Bundle' &&
-    //       //  check if new order exists in mongo through unique identifer
-    //       orderIds.includes(order.id) === false
-    //     ) {
-    //       console.log(
-    //         orderIds.includes(order.id),
-    //         order.id,
-    //         order.created,
-    //         order.discount_applications,
-    //         order.email,
-    //         order.total_price
-    //       );
-    //       discountApplications.push(discountApplication);
-    //       for (let i = 0; i < order.line_items.length; i++) {
-    //         const lineItems =
-    //           order.line_items[i].title +
-    //           ',  qty: ' +
-    //           order.line_items[i].quantity.toString();
-    //         lineItemsArr.push(lineItems);
-    //       }
-    //       const orderObj = {
-    //         line_items: lineItemsArr,
-    //         discount_applications: discountApplications,
-    //         order_id: order.id,
-    //         order_created: order.created_at,
-    //         number: parseInt(order.number),
-    //         email: order.email,
-    //         total_price: order.total_price
-    //       };
-    // axios.post(
-    //   "http://bespoke-backend.herokuapp.com/quiz-orders?apikey=AkZv1hWkkDH9W2sP9Q5WdX8L8u9lbWeO",
-    //   orderObj
-    // );
-    //     console.log('order id not found. posting to db!!');
-    //   }
-    //   // break to prevent posting lineItems more than once
-    //   break;
-    // }
-    // }
-
+      for (let i = 0; i < order.discount_applications.length; i++) {
+        let discountApplication =
+          order &&
+          order.discount_applications[i] &&
+          order.discount_applications[i].title;
+        if (
+          //  check if new order exists in mongo through unique identifer
+          orderIds.includes(order.id) === false &&
+          // check for today
+          // orderDate.getMonth() === today.getMonth() &&
+          // orderDate.getDate() === today.getDate() &&
+          discountApplication === 'Discount Bundle'
+        ) {
+          console.log(
+            orderIds.includes(order.id),
+            order.id,
+            order.created_at,
+            order.discount_applications,
+            order.email,
+            order.total_price
+          );
+          discountApplications.push(discountApplication);
+          for (let i = 0; i < order.line_items.length; i++) {
+            const lineItems =
+              order.line_items[i].title +
+              ',  qty: ' +
+              order.line_items[i].quantity.toString();
+            lineItemsArr.push(lineItems);
+          }
+          const orderObj = {
+            line_items: lineItemsArr,
+            discount_applications: discountApplications,
+            order_id: order.id,
+            order_created: order.created_at,
+            number: parseInt(order.number),
+            email: order.email,
+            total_price: order.total_price
+          };
+          await axios.post(
+            apiPrefix + `quiz-orders?apikey=${REACT_APP_API_KEY}`,
+            orderObj
+          );
+          console.log('order id not found. posting to db!!');
+        }
+        // break to prevent posting lineItems more than once
+        break;
+      }
+    }
     this.fetchLineItems(quizOrdersRes);
   };
 
@@ -458,7 +459,7 @@ class ApiContextProvider extends Component {
       weather
     });
 
-    console.log(front_selfie_count, no_front_selfie_count)
+    console.log(front_selfie_count, no_front_selfie_count);
 
     const { emailCount, quizOrdersArr } = this.state;
 
