@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TotalProfit = props => {
+const DroppedQuizCount = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
@@ -107,8 +107,8 @@ const TotalProfit = props => {
   );
 };
 
-TotalProfit.propTypes = {
+DroppedQuizCount.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalProfit;
+export default DroppedQuizCount;

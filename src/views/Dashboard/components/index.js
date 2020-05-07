@@ -1,10 +1,12 @@
-export { default as Klaviyo } from './Klaviyo';
+export { default as EmailsCaptured } from './EmailsCaptured';
 export { default as LatestOrders } from './LatestOrders';
 export { default as LineItemsSold } from './LineItemsSold';
 export { default as LatestSales } from './LatestSales';
-export { default as CompletedQuizCount } from './CompletedQuizCount';
-export { default as TotalProfit } from './TotalProfit';
+export { default as Conversion } from './Conversion';
+export { default as TotalProfit } from './DroppedQuizCount';
 export { default as TotalUsers } from './TotalUsers';
 export { default as DropOffData } from './DropOffData';
 export { default as DropOffDataBar } from './DropOffDataBar';
-
+export { default as DroppedQuizCount } from './DroppedQuizCount';
+export { default as TotalSales } from './TotalSales';
+export { default as SelfieCount } from './SelfieCount';

@@ -29,7 +29,7 @@ const Profile = props => {
   const classes = useStyles();
 
   const user = {
-    name: 'James',
+    name: 'ADMIN',
     avatar: '/images/avatars/avatar_11.png',
     bio: null
   };

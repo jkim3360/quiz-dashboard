@@ -41,6 +41,11 @@ const Main = props => {
     setOpenSidebar(false);
   };
 
+  const clearStorage = () => {
+    localStorage.clear();
+    window.location.reload(false);
+  };
+
   const shouldOpenSidebar = isDesktop ? true : openSidebar;
 
   return (
@@ -50,7 +55,10 @@ const Main = props => {
         [classes.shiftContent]: isDesktop
       })}
     >
-      <Topbar onSidebarOpen={handleSidebarOpen} />
+      <Topbar
+        clearStorage={clearStorage}
+        onSidebarOpen={handleSidebarOpen}
+      />
       <Sidebar
         onClose={handleSidebarClose}
         open={shouldOpenSidebar}

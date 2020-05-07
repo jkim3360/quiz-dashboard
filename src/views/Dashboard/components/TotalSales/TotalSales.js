@@ -1,16 +1,16 @@
 import React from 'react';
+import { ApiContextConsumer } from '../../../../context/ApiContext';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import PeopleIcon from '@material-ui/icons/PeopleOutlined';
-import { ApiContextConsumer } from '../../../../context/ApiContext';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%'
+    height: '100%',
+    backgroundColor: theme.palette.error.white,
+    color: theme.palette.primary
   },
   content: {
     alignItems: 'center',
@@ -19,8 +19,18 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontWeight: 700
   },
+  difference: {
+    marginTop: theme.spacing(2),
+    display: 'flex',
+    alignItems: 'center'
+  },
+  differenceValue: {
+    color: theme.palette.black,
+    marginRight: theme.spacing(1)
+  },
   avatar: {
-    backgroundColor: theme.palette.success.main,
+    backgroundColor: theme.palette.info.main,
+    color: theme.palette.white,
     height: 56,
     width: 56
   },
@@ -28,30 +38,21 @@ const useStyles = makeStyles(theme => ({
     height: 32,
     width: 32
   },
-  difference: {
-    marginTop: theme.spacing(2),
-    display: 'flex',
-    alignItems: 'center'
-  },
-  differenceIcon: {
-    color: theme.palette.success.dark
-  },
-  differenceValue: {
-    color: theme.palette.success.dark,
-    marginRight: theme.spacing(1)
+  progress: {
+    marginTop: theme.spacing(3)
   }
 }));
 
-const TotalUsers = props => {
+const TotalSales = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
 
-  let quizCount;
-  if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
-    quizCount = JSON.parse(localStorage.getItem('quizAnalytics')).quizCount;
-  }
-  
+  // let droppedQuizCount;
+  // if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
+  //   droppedQuizCount = JSON.parse(localStorage.getItem('quizAnalytics'))
+  //     .droppedQuizCount;
+  // }
   return (
     <ApiContextConsumer>
       {context => (
@@ -67,37 +68,36 @@ const TotalUsers = props => {
               <Grid item>
                 <Typography
                   className={classes.title}
-                  color="textSecondary"
+                  color="inherit"
                   gutterBottom
                   variant="body2"
                 >
-                  TOTAL USERS
+                  TOTAL SALES{' '}
                 </Typography>
-                <Typography variant="h3">
-                  {!context.quizCount
-                    ? quizCount || <CircularProgress />
-                    : context.quizCount}
+                <Typography
+                  color="inherit"
+                  variant="h3"
+                >
+                  {!context.totalSales ? (
+                    <CircularProgress />
+                  ) : (
+                    `$${context.totalSales.toFixed(2)}`
+                  )}
                 </Typography>
               </Grid>
               <Grid item>
                 <Avatar className={classes.avatar}>
-                  <PeopleIcon className={classes.icon} />
+                  <MonetizationOnIcon  />
                 </Avatar>
               </Grid>
-            </Grid>
+            </Grid>{' '}
             <div className={classes.difference}>
-              {/* <ArrowUpwardIcon className={classes.differenceIcon} /> */}
+              {/* <ArrowDownwardIcon className={classes.differenceIcon} /> */}
               <Typography
                 className={classes.differenceValue}
                 variant="body2"
               >
-                {/* 16% */}
-              </Typography>
-              <Typography
-                className={classes.caption}
-                variant="caption"
-              >
-                {/* Since last month */}
+                03-20-20 Launch{' '}
               </Typography>
             </div>
           </CardContent>
@@ -107,8 +107,8 @@ const TotalUsers = props => {
   );
 };
 
-TotalUsers.propTypes = {
+TotalSales.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalUsers;
+export default TotalSales;

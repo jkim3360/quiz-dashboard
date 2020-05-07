@@ -4,15 +4,14 @@ import { Grid } from '@material-ui/core';
 import { ApiContextConsumer } from '../../context/ApiContext';
 
 import {
-  Klaviyo,
+  EmailsCaptured,
   TotalUsers,
-  CompletedQuizCount,
-  TotalProfit,
-  LatestSales,
-  DropOffData,
+  TotalSales,
+  Conversion,
+  DroppedQuizCount,
+  SelfieCount,
   DropOffDataBar,
-  LineItemsSold,
-  LatestOrders
+  DropOffData
 } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -36,16 +35,16 @@ const Dashboard = () => {
               item
               lg={3}
               sm={6}
-              xl={3}
+              xl={2}
               xs={12}
             >
-              <Klaviyo />
+              <EmailsCaptured />
             </Grid>
             <Grid
               item
               lg={3}
               sm={6}
-              xl={3}
+              xl={2}
               xs={12}
             >
               <TotalUsers />
@@ -54,25 +53,42 @@ const Dashboard = () => {
               item
               lg={3}
               sm={6}
-              xl={3}
+              xl={2}
               xs={12}
             >
-              <CompletedQuizCount />
+              <TotalSales />
             </Grid>
             <Grid
               item
               lg={3}
               sm={6}
-              xl={3}
+              xl={2}
               xs={12}
             >
-              <TotalProfit />
+              <Conversion />
             </Grid>
-
             <Grid
               item
-              lg={4}
-              md={4}
+              lg={6}
+              sm={6}
+              xl={2}
+              xs={12}
+            >
+              <DroppedQuizCount />
+            </Grid>
+            <Grid
+              item
+              lg={6}
+              sm={6}
+              xl={2}
+              xs={12}
+            >
+              <SelfieCount />
+            </Grid>
+            <Grid
+              item
+              lg={9}
+              md={8}
               xl={8}
               xs={12}
             >
@@ -80,8 +96,8 @@ const Dashboard = () => {
             </Grid>
             <Grid
               item
-              lg={8}
-              md={8}
+              lg={3}
+              md={4}
               xl={4}
               xs={12}
             >

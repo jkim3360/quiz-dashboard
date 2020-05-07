@@ -458,6 +458,8 @@ class ApiContextProvider extends Component {
       weather
     });
 
+    console.log(front_selfie_count, no_front_selfie_count)
+
     const { emailCount, quizOrdersArr } = this.state;
 
     const quizAnalytics = {

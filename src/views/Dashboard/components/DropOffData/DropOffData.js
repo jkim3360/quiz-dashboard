@@ -118,7 +118,7 @@ const DropOffData = props => {
     legend: {
       display: true,
       position: 'bottom',
-      fullWidth: false,
+      fullWidth: false
     },
     responsive: true,
     maintainAspectRatio: false,
@@ -166,14 +166,7 @@ const DropOffData = props => {
           {...rest}
           className={clsx(classes.root, className)}
         >
-          <CardHeader
-            action={
-              <IconButton size="small">
-                <RefreshIcon />
-              </IconButton>
-            }
-            title="QUIZ DROP OFF"
-          />
+          <CardHeader title="QUIZ DROP OFF" />
           <Divider />
           <CardContent>
             <div className={classes.chartContainer}>

@@ -12,7 +12,7 @@ import {
   Typography
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
+import SyncIcon from '@material-ui/icons/Sync';
 import InputIcon from '@material-ui/icons/Input';
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Topbar = props => {
-  const { className, onSidebarOpen, ...rest } = props;
+  const { className, clearStorage, onSidebarOpen, ...rest } = props;
 
   const classes = useStyles();
 
@@ -59,15 +59,15 @@ const Topbar = props => {
               color="primary"
               variant="dot"
             >
-              <NotificationsIcon />
+              <SyncIcon onClick={clearStorage} />
             </Badge>
           </IconButton>
-          <IconButton
+          {/* <IconButton
             className={classes.signOutButton}
             color="inherit"
           >
             <InputIcon />
-          </IconButton>
+          </IconButton> */}
         </Hidden>
         <Hidden lgUp>
           <IconButton
