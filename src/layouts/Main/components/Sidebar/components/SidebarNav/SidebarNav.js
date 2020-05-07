@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable react/display-name */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -53,17 +53,23 @@ const SidebarNav = props => {
   const { pages, className, ...rest } = props;
 
   const classes = useStyles();
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const handleMenuItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <List
       {...rest}
       className={clsx(classes.root, className)}
     >
-      {pages.map(page => (
+      {pages.map((page, index) => (
         <ListItem
           className={classes.item}
           disableGutters
           key={page.title}
+          onClick={event => handleMenuItemClick(event, index)}
+          selected={index === selectedIndex}
         >
           <Button
             activeClassName={classes.active}

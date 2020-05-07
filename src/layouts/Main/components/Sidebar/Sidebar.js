@@ -6,6 +6,7 @@ import { Divider, Drawer } from '@material-ui/core';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ReceiptIcon from '@material-ui/icons/Receipt';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import ImageIcon from '@material-ui/icons/Image';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -56,7 +57,7 @@ const Sidebar = props => {
     {
       title: 'Latest Sales',
       href: '/line-items',
-      icon: <ShoppingBasketIcon />
+      icon: <ReceiptIcon />
     },
     // {
     //   title: 'Authentication',
