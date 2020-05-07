@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
   image: {
     height: 48,
     width: 48,
-    paddingLeft: 10
+    margin: '0 auto'
   },
   actions: {
     justifyContent: 'flex-end'
@@ -95,7 +95,7 @@ const LineItemsSold = props => {
         <Table height={10}>
           <TableHead>
             <TableRow>
-              <TableCell>Image</TableCell>
+              <TableCell style={{ textAlign: 'center' }}>Image</TableCell>
               <TableCell>Title</TableCell>
               <TableCell>Quantity</TableCell>
               <TableCell sortDirection="desc" />

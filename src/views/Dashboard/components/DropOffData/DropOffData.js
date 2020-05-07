@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
   },
   chartContainer: {
     position: 'relative',
-    height: '300px'
+    height: '300px',
+    marginTop: '20px'
   },
   stats: {
     marginTop: theme.spacing(2),
@@ -109,13 +110,20 @@ const DropOffData = props => {
   };
 
   const options = {
+    title: {
+      display: false,
+      text: 'Legend',
+      fontSize: 15
+    },
     legend: {
-      display: false
+      display: true,
+      position: 'bottom',
+      fullWidth: false,
     },
     responsive: true,
     maintainAspectRatio: false,
     animation: false,
-    cutoutPercentage: 80,
+    cutoutPercentage: 50,
     layout: { padding: 0 },
     tooltips: {
       enabled: true,
@@ -130,26 +138,26 @@ const DropOffData = props => {
     }
   };
 
-  const devices = [
-    {
-      title: 'Desktop',
-      value: '63',
-      icon: <LaptopMacIcon />,
-      color: theme.palette.primary.main
-    },
-    {
-      title: 'Tablet',
-      value: '15',
-      icon: <TabletMacIcon />,
-      color: theme.palette.error.main
-    },
-    {
-      title: 'Mobile',
-      value: '23',
-      icon: <PhoneIphoneIcon />,
-      color: theme.palette.warning.main
-    }
-  ];
+  // const devices = [
+  //   {
+  //     title: 'Desktop',
+  //     value: '63',
+  //     icon: <LaptopMacIcon />,
+  //     color: theme.palette.primary.main
+  //   },
+  //   {
+  //     title: 'Tablet',
+  //     value: '15',
+  //     icon: <TabletMacIcon />,
+  //     color: theme.palette.error.main
+  //   },
+  //   {
+  //     title: 'Mobile',
+  //     value: '23',
+  //     icon: <PhoneIphoneIcon />,
+  //     color: theme.palette.warning.main
+  //   }
+  // ];
 
   return (
     <ApiContextConsumer>
@@ -175,7 +183,7 @@ const DropOffData = props => {
               />
             </div>
             <div className={classes.stats}>
-              {devices.map(device => (
+              {/* {devices.map(device => (
                 <div
                   className={classes.device}
                   key={device.title}
@@ -189,7 +197,7 @@ const DropOffData = props => {
                     {device.value}%
                   </Typography>
                 </div>
-              ))}
+              ))} */}
             </div>
           </CardContent>
         </Card>

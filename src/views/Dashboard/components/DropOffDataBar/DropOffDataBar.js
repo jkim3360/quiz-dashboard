@@ -49,6 +49,7 @@ const DropOffDataBar = props => {
 
   if (localStorage.getItem('quizAnalytics')) {
     quizAnalytics = JSON.parse(localStorage.getItem('quizAnalytics'));
+    console.log(quizAnalytics);
   }
 
   const data = {
@@ -130,26 +131,56 @@ const DropOffDataBar = props => {
     }
   };
 
-  const devices = [
-    {
-      title: 'Desktop',
-      value: '63',
-      icon: <LaptopMacIcon />,
-      color: theme.palette.primary.main
-    },
-    {
-      title: 'Tablet',
-      value: '15',
-      icon: <TabletMacIcon />,
-      color: theme.palette.error.main
-    },
-    {
-      title: 'Mobile',
-      value: '23',
-      icon: <PhoneIphoneIcon />,
-      color: theme.palette.warning.main
-    }
-  ];
+  // const devices = [
+  //   {
+  //     title: 'Email',
+  //     value: '63',
+  //     icon: <LaptopMacIcon />,
+  //     color: theme.palette.primary.main
+  //   },
+  //   {
+  //     title: 'Selfie',
+  //     value: '15',
+  //     icon: <TabletMacIcon />,
+  //     color: theme.palette.error.main
+  //   },
+  //   {
+  //     title: 'No Selfie/Correcting',
+  //     value: '23',
+  //     icon: <PhoneIphoneIcon />,
+  //     color: theme.palette.warning.main
+  //   },
+  //   {
+  //     title: 'Selfie/Correcting',
+  //     value: '23',
+  //     icon: <PhoneIphoneIcon />,
+  //     color: theme.palette.warning.main
+  //   },
+  //   {
+  //     title: 'Thickness',
+  //     value: '23',
+  //     icon: <PhoneIphoneIcon />,
+  //     color: theme.palette.warning.main
+  //   },
+  //   {
+  //     title: 'Conditions',
+  //     value: '23',
+  //     icon: <PhoneIphoneIcon />,
+  //     color: theme.palette.warning.main
+  //   },
+  //   {
+  //     title: 'Goals',
+  //     value: '23',
+  //     icon: <PhoneIphoneIcon />,
+  //     color: theme.palette.warning.main
+  //   },
+  //   {
+  //     title: 'Geofactors',
+  //     value: '23',
+  //     icon: <PhoneIphoneIcon />,
+  //     color: theme.palette.warning.main
+  //   }
+  // ];
 
   return (
     <ApiContextConsumer>
@@ -175,7 +206,7 @@ const DropOffDataBar = props => {
               />
             </div>
             <div className={classes.stats}>
-              {devices.map(device => (
+              {/* {devices.map(device => (
                 <div
                   className={classes.device}
                   key={device.title}
@@ -189,7 +220,7 @@ const DropOffDataBar = props => {
                     {device.value}%
                   </Typography>
                 </div>
-              ))}
+              ))} */}
             </div>
           </CardContent>
         </Card>

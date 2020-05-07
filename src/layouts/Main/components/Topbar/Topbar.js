@@ -59,14 +59,14 @@ const Topbar = props => {
               color="primary"
               variant="dot"
             >
-              {/* <NotificationsIcon /> */}
+              <NotificationsIcon />
             </Badge>
           </IconButton>
           <IconButton
             className={classes.signOutButton}
             color="inherit"
           >
-            {/* <InputIcon /> */}
+            <InputIcon />
           </IconButton>
         </Hidden>
         <Hidden lgUp>

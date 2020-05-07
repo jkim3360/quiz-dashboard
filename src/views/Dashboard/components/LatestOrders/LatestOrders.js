@@ -18,7 +18,8 @@ import {
   TableHead,
   TableRow,
   Tooltip,
-  TableSortLabel
+  TableSortLabel,
+  TablePagination
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
@@ -56,6 +57,18 @@ const LatestOrders = props => {
 
   const classes = useStyles();
 
+  const [rowsPerPage, setRowsPerPage] = useState(14);
+  const [page, setPage] = useState(0);
+
+  const handlePageChange = (event, page) => {
+    setPage(page);
+    console.log(page);
+  };
+
+  const handleRowsPerPageChange = event => {
+    setRowsPerPage(event.target.value);
+  };
+
   // const [orders] = useState(mockData);
   return (
     <ApiContextConsumer>
@@ -79,43 +92,46 @@ const LatestOrders = props => {
                           enterDelay={300}
                           title="Sort"
                         >
-                          <TableSortLabel >
-                            Date
-                          </TableSortLabel>
+                          <TableSortLabel>Date</TableSortLabel>
                         </Tooltip>
                       </TableCell>
                       <TableCell>Price</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {context.quizOrdersArr.slice(0).map(order => (
-                      <TableRow
-                        hover
-                        key={order.number}
-                      >
-                        <TableCell>
-                          <a
-                            href={`https://fekkaibrands.myshopify.com/admin/orders/${order.orderId}`}
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: 'none', color: 'black' }}
-                            target="_blank"
-                          >
-                            FK{order.number}
-                          </a>
-                        </TableCell>
-                        <TableCell>{order.email}</TableCell>
-                        <TableCell>
-                          {/* {moment */}
-                          {new Date(order.orderCreated).toDateString()}
-                          {/* .format('DD/MM/YYYY')} */}
-                        </TableCell>
-                        <TableCell>
-                          <div className={classes.statusContainer}>
-                            {order.totalPrice}
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    {context.quizOrdersArr
+                      .slice(
+                        page === 0 ? 0 : rowsPerPage * page,
+                        page === 0 ? rowsPerPage : rowsPerPage * (page + 1)
+                      )
+                      .map(order => (
+                        <TableRow
+                          hover
+                          key={order.number}
+                        >
+                          <TableCell>
+                            <a
+                              href={`https://fekkaibrands.myshopify.com/admin/orders/${order.orderId}`}
+                              rel="noopener noreferrer"
+                              style={{ textDecoration: 'none', color: 'black' }}
+                              target="_blank"
+                            >
+                              FK{order.number}
+                            </a>
+                          </TableCell>
+                          <TableCell>{order.email}</TableCell>
+                          <TableCell>
+                            {/* {moment */}
+                            {new Date(order.orderCreated).toDateString()}
+                            {/* .format('DD/MM/YYYY')} */}
+                          </TableCell>
+                          <TableCell>
+                            <div className={classes.statusContainer}>
+                              {order.totalPrice}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
                   </TableBody>
                 </Table>
               </div>
@@ -123,13 +139,15 @@ const LatestOrders = props => {
           </CardContent>
           <Divider />
           <CardActions className={classes.actions}>
-            <Button
-              color="primary"
-              size="small"
-              variant="text"
-            >
-              {/* View all <ArrowRightIcon /> */}
-            </Button>
+            <TablePagination
+              component="div"
+              count={context.quizOrdersArr.length}
+              onChangePage={handlePageChange}
+              onChangeRowsPerPage={handleRowsPerPageChange}
+              page={page}
+              rowsPerPage={rowsPerPage}
+              rowsPerPageOptions={[]}
+            />
           </CardActions>
         </Card>
       )}

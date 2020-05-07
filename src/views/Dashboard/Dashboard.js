@@ -73,6 +73,15 @@ const Dashboard = () => {
               item
               lg={4}
               md={4}
+              xl={8}
+              xs={12}
+            >
+              <DropOffDataBar />
+            </Grid>
+            <Grid
+              item
+              lg={8}
+              md={8}
               xl={4}
               xs={12}
             >
@@ -89,16 +98,6 @@ const Dashboard = () => {
             </Grid>
             <Grid
               item
-              lg={8}
-              md={8}
-              xl={8}
-              xs={12}
-            >
-              <DropOffDataBar />
-              {/* <LatestSales /> */}
-            </Grid>
-            <Grid
-              item
               lg={6}
               md={6}
               xl={6}
@@ -110,9 +109,7 @@ const Dashboard = () => {
               md={6}
               xl={6}
               xs={6}
-            >
-              {/* <LatestOrders /> */}
-            </Grid>
+            />
           </Grid>
         </div>
       )}
