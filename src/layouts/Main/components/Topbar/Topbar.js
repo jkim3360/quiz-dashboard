@@ -14,6 +14,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import SyncIcon from '@material-ui/icons/Sync';
 import InputIcon from '@material-ui/icons/Input';
+import fekkaiLogo from '../../../../assets/fekkai-logo-transparent.png' 
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,14 +43,15 @@ const Topbar = props => {
       <Toolbar>
         <RouterLink to="/">
           {/* insert image or logo here fekkai */}
-          <Typography
+          <img style={{height: '28px'}} src={fekkaiLogo} />
+          {/* <Typography
             style={{
               color: 'white'
             }}
             variant="h3"
           >
             FEKKAI
-          </Typography>
+          </Typography> */}
         </RouterLink>
         <div className={classes.flexGrow} />
         <Hidden mdDown>
