@@ -368,7 +368,7 @@ class ApiContextProvider extends Component {
       if (user.user_data.compute === false) {
         dropped++;
       }
-      if (user.user_data.compute === true && user.user_data.answers) {
+      if (user.user_data.compute === true) {
         complete++;
       }
       //  selfie does not exist and no CV compute characteristics - only email
