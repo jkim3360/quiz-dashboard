@@ -353,13 +353,13 @@ class ApiContextProvider extends Component {
     let userListData = [];
 
     for (let user of userData.data) {
-      if (user.user_data.answers) {
       if (user.user_data.compute === true) {
         completedQuizCount++;
       }
       if (user.user_data.compute === false) {
         droppedQuizCount++;
       }
+      if (user.user_data.answers) {
       if (user.user_data.front_selfie !== null) {
         front_selfie_count++;
       } else {
