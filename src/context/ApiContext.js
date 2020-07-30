@@ -356,60 +356,60 @@ class ApiContextProvider extends Component {
       //  selfie does not exist and no CV compute characteristics - only email
       if (user.user_data.email && !user.user_data.answers) drop_email++;
       if (user.user_data.answers) {
-      if (user.user_data.compute === true) {
-        completedQuizCount++;
-      }
-      if (user.user_data.compute === false) {
-        droppedQuizCount++;
-      }
-      if (user.user_data.front_selfie !== null) {
-        front_selfie_count++;
-      } else {
-        no_front_selfie_count++;
-      }
+        if (user.user_data.compute === true) {
+          completedQuizCount++;
+        }
+        if (user.user_data.compute === false) {
+          droppedQuizCount++;
+        }
+        if (user.user_data.front_selfie !== null) {
+          front_selfie_count++;
+        } else {
+          no_front_selfie_count++;
+        }
 
-      if (user.user_data.compute === false) {
-        dropped++;
-      }
-      if (user.user_data.compute === true) {
-        complete++;
-      }
-      // selfie exists and any one of the cv data missing - user dropped off after selfie
-      else if (
-        user.user_data.front_selfie &&
-        (!user.user_data.answers.hair_texture ||
-          !user.user_data.answers.hair_length ||
-          !user.user_data.answers.hair_color)
-      )
-        front_selfie_edit++;
-      // no selfie and at least one cv characterist exists and at least one is missing - user dropped off while editing
-      else if (
-        !user.user_data.front_selfie &&
-        (!user.user_data.answers.hair_texture ||
-          !user.user_data.answers.hair_length ||
-          !user.user_data.answers.hair_color)
-      )
-        no_front_selfie_edit++;
-      else if (
-        user.user_data.front_selfie &&
-        !user.user_data.answers.hair_thickness
-      )
-        front_selfie++;
-      //user dropped off before answering any of these questions
-      else if (!user.user_data.answers.hair_thickness) hair_thickness++;
-      else if (!user.user_data.answers.hair_condition) hair_condition++;
-      else if (!user.user_data.answers.hair_goals) hair_goals++;
-      // user did not finish quiz at end - same as compute false
-      else if (!user.user_data.answers.weather) weather++;
+        if (user.user_data.compute === false) {
+          dropped++;
+        }
+        if (user.user_data.compute === true) {
+          complete++;
+        }
+        // selfie exists and any one of the cv data missing - user dropped off after selfie
+        else if (
+          user.user_data.front_selfie &&
+          (!user.user_data.answers.hair_texture ||
+            !user.user_data.answers.hair_length ||
+            !user.user_data.answers.hair_color)
+        )
+          front_selfie_edit++;
+        // no selfie and at least one cv characterist exists and at least one is missing - user dropped off while editing
+        else if (
+          !user.user_data.front_selfie &&
+          (!user.user_data.answers.hair_texture ||
+            !user.user_data.answers.hair_length ||
+            !user.user_data.answers.hair_color)
+        )
+          no_front_selfie_edit++;
+        else if (
+          user.user_data.front_selfie &&
+          !user.user_data.answers.hair_thickness
+        )
+          front_selfie++;
+        //user dropped off before answering any of these questions
+        else if (!user.user_data.answers.hair_thickness) hair_thickness++;
+        else if (!user.user_data.answers.hair_condition) hair_condition++;
+        else if (!user.user_data.answers.hair_goals) hair_goals++;
+        // user did not finish quiz at end - same as compute false
+        else if (!user.user_data.answers.weather) weather++;
 
-      userCodes.push(user.user_code);
+        userCodes.push(user.user_code);
 
-      // for User List View
-      if (user.created > '2020-03-20T00:00:00') {
-        userListData.push(user);
+        // for User List View
+        if (user.created > '2020-03-20T00:00:00') {
+          userListData.push(user);
+        }
       }
-    
-  }
+    }
     localStorage.setItem('userCodes', JSON.stringify(userCodes));
     localStorage.setItem(
       'userListData',
