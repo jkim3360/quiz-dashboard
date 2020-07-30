@@ -353,6 +353,7 @@ class ApiContextProvider extends Component {
     let userListData = [];
 
     for (let user of userData.data) {
+      if (user.user_data.answers) {
       if (user.user_data.compute === true) {
         completedQuizCount++;
       }
@@ -408,6 +409,7 @@ class ApiContextProvider extends Component {
         userListData.push(user);
       }
     }
+  }
     localStorage.setItem('userCodes', JSON.stringify(userCodes));
     localStorage.setItem(
       'userListData',
