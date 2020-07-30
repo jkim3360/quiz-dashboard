@@ -353,6 +353,8 @@ class ApiContextProvider extends Component {
     let userListData = [];
 
     for (let user of userData.data) {
+      //  selfie does not exist and no CV compute characteristics - only email
+      if (user.user_data.email && !user.user_data.answers) drop_email++;
       if (user.user_data.answers) {
       if (user.user_data.compute === true) {
         completedQuizCount++;
@@ -372,8 +374,6 @@ class ApiContextProvider extends Component {
       if (user.user_data.compute === true) {
         complete++;
       }
-      //  selfie does not exist and no CV compute characteristics - only email
-      else if (user.user_data.email && !user.user_data.answers) drop_email++;
       // selfie exists and any one of the cv data missing - user dropped off after selfie
       else if (
         user.user_data.front_selfie &&
