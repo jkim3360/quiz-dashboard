@@ -407,7 +407,7 @@ class ApiContextProvider extends Component {
       if (user.created > '2020-03-20T00:00:00') {
         userListData.push(user);
       }
-    }
+    
   }
     localStorage.setItem('userCodes', JSON.stringify(userCodes));
     localStorage.setItem(
