@@ -359,7 +359,6 @@ class ApiContextProvider extends Component {
       if (user.user_data.compute === false) {
         droppedQuizCount++;
       }
-      if (user.user_data.answers) {
       if (user.user_data.front_selfie !== null) {
         front_selfie_count++;
       } else {
@@ -369,7 +368,7 @@ class ApiContextProvider extends Component {
       if (user.user_data.compute === false) {
         dropped++;
       }
-      if (user.user_data.compute === true) {
+      if (user.user_data.compute === true && user.user_data.answers) {
         complete++;
       }
       //  selfie does not exist and no CV compute characteristics - only email
