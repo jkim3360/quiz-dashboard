@@ -4,6 +4,9 @@
   * quiz usage database is compiles machine learning AutoML data along with user answers
   * sales database automatically detects and posts instances of new orders pulled from Shopify API on each     visit to front end
 
+<h2>npm install</h2>
+Install packages before running application.
+
 <h2>npm start</h2>
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
