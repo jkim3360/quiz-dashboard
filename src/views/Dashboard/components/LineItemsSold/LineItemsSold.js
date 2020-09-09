@@ -59,7 +59,7 @@ const LineItemsSold = props => {
     : JSON.parse(localStorage.getItem('lineItems'));
 
   let newLineItems = [];
-
+  console.log('new line items: ', newLineItems);
   let lineItemsKeys = props.lineItems ? Object.keys(lineItems) : '';
 
   for (let i = 0; i < lineItemsKeys.length; i++) {
@@ -82,10 +82,7 @@ const LineItemsSold = props => {
 
   console.log(newLineItems);
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <Card {...rest} className={clsx(classes.root, className)}>
       <CardHeader
         subtitle={`${products.length} in total`}
         title="Line Items Sold"
@@ -106,14 +103,12 @@ const LineItemsSold = props => {
               maxHeight: '378px',
               overflowY: 'auto',
               overflowX: 'hidden'
-            }}
-          >
+            }}>
             {newLineItems.map((product, i) => (
               <TableRow>
                 <ListItemAvatar
                   className={classes.avatar}
-                  key={product.lineItem}
-                >
+                  key={product.lineItem}>
                   <img
                     alt="Product"
                     className={classes.image}
@@ -122,10 +117,7 @@ const LineItemsSold = props => {
                 </ListItemAvatar>
                 <TableCell>{product.title}</TableCell>
                 <TableCell>{product.qty}</TableCell>
-                <IconButton
-                  edge="end"
-                  size="small"
-                />
+                <IconButton edge="end" size="small" />
               </TableRow>
             ))}
           </TableBody>
@@ -133,11 +125,7 @@ const LineItemsSold = props => {
       </CardContent>
       <Divider />
       <CardActions className={classes.actions}>
-        <Button
-          color="primary"
-          size="small"
-          variant="text"
-        >
+        <Button color="primary" size="small" variant="text">
           {/* View all <ArrowRightIcon /> */}
         </Button>
       </CardActions>

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
 const apiPrefix =
+  'http://localhost:4000/' ||
   process.env.REACT_APP_BACKEND_HOST ||
   'https://bespoke-backend.herokuapp.com/';
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
@@ -98,7 +99,13 @@ class ApiContextProvider extends Component {
       4415937183834,
       4415944884314,
       4415973064794,
-      4415975719002
+      4415975719002,
+      // CBD
+      4755564527706,
+      4755563380826,
+      4755564232794,
+      4755565543514,
+      4755562168410
     ];
     const variants = [];
 
@@ -332,7 +339,8 @@ class ApiContextProvider extends Component {
   fetchUserData = async () => {
     const userData = await axios.get(`${REACT_APP_MONGO_DB_WEBHOOK}`);
 
-    console.log(JSON.stringify(userData));
+    // all user data from mongodb webhook
+    // console.log(JSON.stringify(userData));
 
     const quizCount = userData.data.length;
     let complete = 0;
@@ -355,60 +363,65 @@ class ApiContextProvider extends Component {
     for (let user of userData.data) {
       //  selfie does not exist and no CV compute characteristics - only email
       if (user.user_data.email && !user.user_data.answers) drop_email++;
-      if (user.user_data.answers) {
-        if (user.user_data.compute === true) {
-          completedQuizCount++;
-        }
-        if (user.user_data.compute === false) {
-          droppedQuizCount++;
-        }
-        if (user.user_data.front_selfie !== null) {
-          front_selfie_count++;
-        } else {
-          no_front_selfie_count++;
-        }
-
-        if (user.user_data.compute === false) {
-          dropped++;
-        }
-        if (user.user_data.compute === true) {
-          complete++;
-        }
-        // selfie exists and any one of the cv data missing - user dropped off after selfie
-        else if (
-          user.user_data.front_selfie &&
-          (!user.user_data.answers.hair_texture ||
-            !user.user_data.answers.hair_length ||
-            !user.user_data.answers.hair_color)
-        )
-          front_selfie_edit++;
-        // no selfie and at least one cv characterist exists and at least one is missing - user dropped off while editing
-        else if (
-          !user.user_data.front_selfie &&
-          (!user.user_data.answers.hair_texture ||
-            !user.user_data.answers.hair_length ||
-            !user.user_data.answers.hair_color)
-        )
-          no_front_selfie_edit++;
-        else if (
-          user.user_data.front_selfie &&
-          !user.user_data.answers.hair_thickness
-        )
-          front_selfie++;
-        //user dropped off before answering any of these questions
-        else if (!user.user_data.answers.hair_thickness) hair_thickness++;
-        else if (!user.user_data.answers.hair_condition) hair_condition++;
-        else if (!user.user_data.answers.hair_goals) hair_goals++;
-        // user did not finish quiz at end - same as compute false
-        else if (!user.user_data.answers.weather) weather++;
-
-        userCodes.push(user.user_code);
-
-        // for User List View
-        if (user.created > '2020-03-20T00:00:00') {
-          userListData.push(user);
-        }
+      // if (user.user_data.answers) {
+      if (user.user_data.compute === true) {
+        completedQuizCount++;
       }
+      if (user.user_data.compute === false) {
+        droppedQuizCount++;
+      }
+      if (user.user_data.front_selfie !== null) {
+        front_selfie_count++;
+      } else {
+        no_front_selfie_count++;
+      }
+
+      if (user.user_data.compute === false) {
+        dropped++;
+      }
+      if (user.user_data.compute === true) {
+        complete++;
+      }
+      // selfie exists and any one of the cv data missing - user dropped off after selfie
+      else if (
+        user.user_data.front_selfie &&
+        ((user.user_data.answers && !user.user_data.answers.hair_texture) ||
+          (user.user_data.answers && !user.user_data.answers.hair_length) ||
+          (user.user_data.answers && !user.user_data.answers.hair_color))
+      )
+        front_selfie_edit++;
+      // no selfie and at least one cv characterist exists and at least one is missing - user dropped off while editing
+      else if (
+        !user.user_data.front_selfie &&
+        ((user.user_data.answers && !user.user_data.answers.hair_texture) ||
+          (user.user_data.answers && !user.user_data.answers.hair_length) ||
+          (user.user_data.answers && !user.user_data.answers.hair_color))
+      )
+        no_front_selfie_edit++;
+      else if (
+        user.user_data.front_selfie &&
+        user.user_data.answers &&
+        !user.user_data.answers.hair_thickness
+      )
+        front_selfie++;
+      //user dropped off before answering any of these questions
+      else if (user.user_data.answers && !user.user_data.answers.hair_thickness)
+        hair_thickness++;
+      else if (user.user_data.answers && !user.user_data.answers.hair_condition)
+        hair_condition++;
+      else if (user.user_data.answers && !user.user_data.answers.hair_goals)
+        hair_goals++;
+      // user did not finish quiz at end - same as compute false
+      else if (user.user_data.answers && !user.user_data.answers.weather)
+        weather++;
+
+      userCodes.push(user.user_code);
+
+      // for User List View
+      if (user.created > '2020-03-20T00:00:00') {
+        userListData.push(user);
+      }
+      // }
     }
     localStorage.setItem('userCodes', JSON.stringify(userCodes));
     localStorage.setItem(
