@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
 import { ApiContextConsumer } from '../../../../context/ApiContext';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -20,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.success.main,
+    backgroundColor: theme.palette.warning.main,
     height: 56,
     width: 56
   },

@@ -9,20 +9,15 @@ import {
   CardActions,
   Button,
   Divider,
-  ListItem,
   ListItemAvatar,
   TableCell,
   Table,
   TableBody,
   TableHead,
   TableRow,
-  Tooltip,
-  TableSortLabel,
   IconButton
 } from '@material-ui/core';
-import UsersTable from '../../../UserList/components/UsersTable';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import UsersTable from '../../../UserList/components/UsersTable';
 
 import mockData from './data';
 
@@ -34,8 +29,8 @@ const useStyles = makeStyles(() => ({
     padding: 0
   },
   image: {
-    height: 48,
-    width: 48,
+    height: 45,
+    width: 45,
     margin: '0 auto'
   },
   actions: {
@@ -43,13 +38,14 @@ const useStyles = makeStyles(() => ({
   },
   avatar: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'center'
   }
 }));
 
 const LineItemsSold = props => {
   const { className, variants, ...rest } = props;
-
   const classes = useStyles();
 
   const [products] = useState(mockData);
@@ -59,7 +55,7 @@ const LineItemsSold = props => {
     : JSON.parse(localStorage.getItem('lineItems'));
 
   let newLineItems = [];
-  console.log('new line items: ', newLineItems);
+  // console.log('new line items: ', newLineItems);
   let lineItemsKeys = props.lineItems ? Object.keys(lineItems) : '';
 
   for (let i = 0; i < lineItemsKeys.length; i++) {
@@ -80,7 +76,7 @@ const LineItemsSold = props => {
   //   newLineItems.push(obj);
   // }
 
-  console.log(newLineItems);
+  // console.log(newLineItems);
   return (
     <Card {...rest} className={clsx(classes.root, className)}>
       <CardHeader

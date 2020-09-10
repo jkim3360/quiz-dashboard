@@ -6,8 +6,10 @@ import { ApiContextConsumer } from '../../context/ApiContext';
 import {
   EmailsCaptured,
   TotalUsers,
+  CompletedUsers,
   TotalSales,
-  Conversion,
+  CompletedConversion,
+  TotalConversion,
   DroppedQuizCount,
   SelfieCount,
   DropOffDataBar,
@@ -27,80 +29,36 @@ const Dashboard = () => {
     <ApiContextConsumer>
       {context => (
         <div className={classes.root}>
-          <Grid
-            container
-            spacing={4}
-          >
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={2}
-              xs={12}
-            >
+          <Grid container spacing={4}>
+            <Grid item lg={3} sm={6} xl={2} xs={12}>
               <EmailsCaptured />
             </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={2}
-              xs={12}
-            >
+            <Grid item lg={3} sm={6} xl={2} xs={12}>
               <TotalUsers />
             </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={2}
-              xs={12}
-            >
+            <Grid item lg={3} sm={6} xl={2} xs={12}>
+              <CompletedUsers />
+            </Grid>
+            <Grid item lg={3} sm={6} xl={2} xs={12}>
               <TotalSales />
             </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={2}
-              xs={12}
-            >
-              <Conversion />
+            <Grid item lg={3} sm={6} xl={2} xs={12}>
+              <CompletedConversion />
             </Grid>
-            <Grid
-              item
-              lg={6}
-              sm={6}
-              xl={2}
-              xs={12}
-            >
+            <Grid item lg={3} sm={6} xl={2} xs={12}>
+              <TotalConversion />
+            </Grid>
+            <Grid item lg={3} sm={6} xl={6} xs={12}>
               <DroppedQuizCount />
             </Grid>
-            <Grid
-              item
-              lg={6}
-              sm={6}
-              xl={2}
-              xs={12}
-            >
+            <Grid item lg={3} sm={6} xl={6} xs={12}>
               <SelfieCount />
             </Grid>
-            <Grid
-              item
-              lg={9}
-              md={8}
-              xl={8}
-              xs={12}
-            >
+
+            <Grid item lg={9} md={8} xl={8} xs={12}>
               <DropOffDataBar />
             </Grid>
-            <Grid
-              item
-              lg={3}
-              md={4}
-              xl={4}
-              xs={12}
-            >
+            <Grid item lg={3} md={4} xl={4} xs={12}>
               <DropOffData
                 drop_email={context.drop_email}
                 front_selfie={context.front_selfie}
@@ -112,20 +70,8 @@ const Dashboard = () => {
                 weather={context.weather}
               />
             </Grid>
-            <Grid
-              item
-              lg={6}
-              md={6}
-              xl={6}
-              xs={12}
-            />
-            <Grid
-              item
-              lg={6}
-              md={6}
-              xl={6}
-              xs={6}
-            />
+            <Grid item lg={6} md={6} xl={6} xs={12} />
+            <Grid item lg={6} md={6} xl={6} xs={6} />
           </Grid>
         </div>
       )}

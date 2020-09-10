@@ -69,12 +69,12 @@ const CompletedQuizCount = props => {
                   gutterBottom
                   variant="body2"
                 >
-                  CONVERSION
+                  TOT. QUIZ CONV.
                 </Typography>
                 <Typography variant="h3">
                   {!context.completedQuizCount && !context.completedQuizCount 
-                    ? quizAnalytics ? quizAnalytics.completedConversion : <CircularProgress />
-                    : (context.completedConversion * 100).toFixed(2) + '%'}
+                    ? quizAnalytics ? quizAnalytics.totalConversion : <CircularProgress />
+                    : (context.totalConversion * 100).toFixed(2) + '%'}
                 </Typography>
               </Grid>
               <Grid item>
@@ -93,13 +93,13 @@ const CompletedQuizCount = props => {
               variant="caption"
             >
               {localStorage.getItem('quizAnalytics')
-                ? quizAnalytics.completed
-                : context.completedQuizCount}{' '}
+                ? quizAnalytics.droppedQuizCount
+                : context.droppedQuizCount}{' '}
               out of{' '}
               {localStorage.getItem('quizAnalytics')
                 ? quizAnalytics.quizCount
                 : context.quizCount}{' '}
-              users completed quiz
+              users did not complete quiz
             </Typography>
           </CardContent>
         </Card>

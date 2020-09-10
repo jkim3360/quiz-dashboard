@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ApiContextConsumer } from '../../context/ApiContext';
 import LineItemsSold from '../Dashboard/components/LineItemsSold';
 import LatestOrders from '../Dashboard/components/LatestOrders';
@@ -18,26 +18,11 @@ const LineItems = () => {
     <ApiContextConsumer>
       {context => (
         <div className={classes.root}>
-          <Grid
-            container
-            spacing={4}
-          >
-            <Grid
-              item
-              lg={6}
-              md={6}
-              xl={6}
-              xs={12}
-            >
+          <Grid container spacing={4}>
+            <Grid item lg={6} md={6} xl={6} xs={12}>
               <LatestOrders />
             </Grid>
-            <Grid
-              item
-              lg={6}
-              md={6}
-              xl={6}
-              xs={12}
-            >
+            <Grid item lg={6} md={6} xl={6} xs={12}>
               <LineItemsSold
                 lineItems={context.lineItems}
                 variants={context.variants}

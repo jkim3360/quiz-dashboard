@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
-const apiPrefix =
-
-  process.env.REACT_APP_BACKEND_HOST ||
-  'https://bespoke-backend.herokuapp.com/';
+const apiPrefix = 'http://localhost:4000/';
+//  ||
+// process.env.REACT_APP_BACKEND_HOST ||
+// 'https://bespoke-backend.herokuapp.com/';
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 const REACT_APP_MONGO_DB_WEBHOOK = process.env.REACT_APP_MONGO_DB_WEBHOOK;
 
@@ -20,6 +20,7 @@ class ApiContextProvider extends Component {
     no_front_selfie_count: null,
     orderCount: null,
     completedConversion: null,
+    totalConversion: null,
     drop_email: null,
     front_selfie: null,
     no_front_selfie_edit: null,
@@ -84,7 +85,7 @@ class ApiContextProvider extends Component {
     );
 
     let variantsData = variantsRes.data.products;
-    console.log(variantsData);
+    // console.log(variantsData);
     const variantIds = [
       4416274399322,
       4415929483354,
@@ -121,14 +122,14 @@ class ApiContextProvider extends Component {
       }
     }
 
-    console.log(variants);
+    // console.log(variants);
     this.setState({
       quizOrdersArr: quizOrdersArr.reverse(),
       variants,
       totalSales
     });
 
-    console.log(quizOrdersRes.data.length);
+    // console.log(quizOrdersRes.data.length);
     // find all order dates from mongo as unique identifiers
     const orderIds = [];
     for (let order of quizOrdersRes.data) {
@@ -137,8 +138,8 @@ class ApiContextProvider extends Component {
 
     // search for new bundle discount orders (chat quiz)
     for (let order of fekkaiOrders.data) {
-      let orderDate = new Date(order.created_at);
-      let today = new Date();
+      // let orderDate = new Date(order.created_at);
+      // let today = new Date();
 
       let lineItemsArr = [];
       let discountApplications = [];
@@ -209,14 +210,22 @@ class ApiContextProvider extends Component {
     let fullBlownMist = 0;
     let babyBlondeShampoo = 0;
     let babyBlondeCreme = 0;
+    let cbdSupremeOil = 0;
+    let cbdCalmingConditioner = 0;
+    let cbdCalmingMask = 0;
+    let cbdShampooFine = 0;
+    let cbdShampooCoarse = 0;
 
     let allLineItems = [];
     for (let i = 0; i < response.data.length; i++) {
       let lineItemsList = response.data[i].line_items;
+      // console.log(lineItemsList);
       for (let j = 0; j < lineItemsList.length; j++) {
         allLineItems.push(lineItemsList[j]);
       }
     }
+
+    // console.log(allLineItems)
 
     allLineItems.map(e => {
       if (
@@ -309,7 +318,42 @@ class ApiContextProvider extends Component {
       ) {
         let splitItem = e.split(',  qty: ');
         babyBlondeCreme = babyBlondeCreme + parseInt(splitItem[1]);
+      } else if (
+        e.toLowerCase().includes('cbd calming supreme oil scalp') &&
+        e.toLowerCase().indexOf('sample') === -1
+      ) {
+        let splitItem = e.split(',  qty: ');
+        cbdSupremeOil = cbdSupremeOil + parseInt(splitItem[1]);
+      } else if (
+        e.toLowerCase().includes('cbd scalp calming hydrating conditioner') &&
+        e.toLowerCase().indexOf('sample') === -1
+      ) {
+        let splitItem = e.split(',  qty: ');
+        cbdCalmingConditioner = cbdCalmingConditioner + parseInt(splitItem[1]);
+      } else if (
+        e.toLowerCase().includes('cbd scalp calming hydrating mask') &&
+        e.toLowerCase().indexOf('sample') === -1
+      ) {
+        let splitItem = e.split(',  qty: ');
+        cbdCalmingMask = cbdCalmingMask + parseInt(splitItem[1]);
+      } else if (
+        e
+          .toLowerCase()
+          .includes('cbd scalp calming shampoo for fine-to-medium') &&
+        e.toLowerCase().indexOf('sample') === -1
+      ) {
+        let splitItem = e.split(',  qty: ');
+        cbdShampooFine = cbdShampooFine + parseInt(splitItem[1]);
+      } else if (
+        e
+          .toLowerCase()
+          .includes('cbd scalp calming shampoo for medium-to-coarse') &&
+        e.toLowerCase().indexOf('sample') === -1
+      ) {
+        let splitItem = e.split(',  qty: ');
+        cbdShampooCoarse = cbdShampooCoarse + parseInt(splitItem[1]);
       }
+      return
     });
 
     const lineItems = {
@@ -326,7 +370,12 @@ class ApiContextProvider extends Component {
       fullBlownConditioner: fullBlownConditioner,
       fullBlownMist: fullBlownMist,
       babyBlondeShampoo: babyBlondeShampoo,
-      babyBlondeCreme: babyBlondeCreme
+      babyBlondeCreme: babyBlondeCreme,
+      cbdSupremeOil: cbdSupremeOil,
+      cbdCalmingConditioner: cbdCalmingConditioner,
+      cbdCalmingMask: cbdCalmingMask,
+      cbdShampooFine: cbdShampooFine,
+      cbdShampooCoarse: cbdShampooCoarse
     };
 
     localStorage.setItem('lineItems', JSON.stringify(lineItems));
@@ -464,6 +513,7 @@ class ApiContextProvider extends Component {
       front_selfie_count,
       no_front_selfie_count,
       completedConversion: orderCount / completedQuizCount,
+      totalConversion: orderCount / quizCount,
       drop_email,
       front_selfie,
       no_front_selfie_edit,
@@ -474,7 +524,7 @@ class ApiContextProvider extends Component {
       weather
     });
 
-    console.log(front_selfie_count, no_front_selfie_count);
+    // console.log(front_selfie_count, no_front_selfie_count);
 
     const { emailCount, quizOrdersArr } = this.state;
 

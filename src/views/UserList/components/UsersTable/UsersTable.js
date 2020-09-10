@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
 import {
@@ -86,7 +85,7 @@ const UsersTable = props => {
 
   const handlePageChange = (event, page) => {
     setPage(page);
-    console.log(page);
+    // console.log(page);
   };
 
   const handleRowsPerPageChange = event => {
@@ -144,7 +143,7 @@ const UsersTable = props => {
                         />
                       </TableCell>
                       <TableCell>
-                        <div className={classes.nameContainer}>
+                        <span className={classes.nameContainer}>
                           <Avatar
                             className={classes.avatar}
                             src={user.selfie}
@@ -152,7 +151,7 @@ const UsersTable = props => {
                             {getInitials(user.name)}
                           </Avatar>
                           <Typography variant="body1">{user.name}</Typography>
-                        </div>
+                        </span>
                       </TableCell>
                       <TableCell>{user.email}</TableCell>
                       <TableCell>{user.userCode}</TableCell>

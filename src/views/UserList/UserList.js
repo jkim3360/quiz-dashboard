@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { UsersToolbar, UsersTable } from './components';
-import mockData from './data';
+import { UsersTable } from './components';
+// import mockData from './data';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,7 +21,7 @@ const UserList = props => {
     ? JSON.parse(localStorage.getItem('userListData'))
     : 
     props.userListData;
-  console.log(userListData);
+  // console.log(userListData);
 
   let users = [];
 

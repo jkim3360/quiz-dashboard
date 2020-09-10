@@ -9,11 +9,9 @@ import {
   Badge,
   Hidden,
   IconButton,
-  Typography
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import SyncIcon from '@material-ui/icons/Sync';
-import InputIcon from '@material-ui/icons/Input';
 import fekkaiLogo from '../../../../assets/fekkai-logo-transparent.png' 
 
 const useStyles = makeStyles(theme => ({
@@ -43,7 +41,7 @@ const Topbar = props => {
       <Toolbar>
         <RouterLink to="/">
           {/* insert image or logo here fekkai */}
-          <img style={{height: '28px'}} src={fekkaiLogo} />
+          <img alt={fekkaiLogo} style={{height: '28px'}} src={fekkaiLogo} />
           {/* <Typography
             style={{
               color: 'white'

@@ -8,14 +8,9 @@ import {
   Card,
   CardHeader,
   CardContent,
-  IconButton,
   Divider,
-  Typography
 } from '@material-ui/core';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import TabletMacIcon from '@material-ui/icons/TabletMac';
+
 
 const useStyles = makeStyles(theme => ({
   root: {

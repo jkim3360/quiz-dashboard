@@ -1,10 +1,11 @@
 import React from 'react';
-import { ApiContextConsumer } from '../../../../context/ApiContext';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import EmailIcon from '@material-ui/icons/Email';
+import PeopleIcon from '@material-ui/icons/PeopleOutlined';
+import { ApiContextConsumer } from '../../../../context/ApiContext';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.error.main,
+    backgroundColor: theme.palette.success.main,
     height: 56,
     width: 56
   },
@@ -32,19 +33,24 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center'
   },
   differenceIcon: {
-    color: theme.palette.error.dark
+    color: theme.palette.success.dark
   },
   differenceValue: {
-    color: theme.palette.error.dark,
+    color: theme.palette.success.dark,
     marginRight: theme.spacing(1)
   }
 }));
 
-const Klaviyo = props => {
+const CompletedUsers = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
 
+  let completedQuizCount;
+  if (JSON.parse(localStorage.getItem('quizAnalytics'))) {
+    completedQuizCount = JSON.parse(localStorage.getItem('quizAnalytics')).completed;
+  }
+  
   return (
     <ApiContextConsumer>
       {context => (
@@ -64,24 +70,33 @@ const Klaviyo = props => {
                   gutterBottom
                   variant="body2"
                 >
-                  EMAILS CAPTURED{' '}
+                  COMPLETED QUIZ COUNT
                 </Typography>
-                <Typography variant="h3">{
-                context.emailCount}</Typography>
+                <Typography variant="h3">
+                  {!context.completedQuizCount
+                    ? completedQuizCount || <CircularProgress />
+                    : context.completedQuizCount}
+                </Typography>
               </Grid>
               <Grid item>
                 <Avatar className={classes.avatar}>
-                  <EmailIcon className={classes.icon} />
+                  <PeopleIcon className={classes.icon} />
                 </Avatar>
               </Grid>
             </Grid>
             <div className={classes.difference}>
-              {/* <ArrowDownwardIcon className={classes.differenceIcon} /> */}
+              {/* <ArrowUpwardIcon className={classes.differenceIcon} /> */}
               <Typography
                 className={classes.differenceValue}
                 variant="body2"
               >
-                03-20-20 Launch{' '}
+                {/* 16% */}
+              </Typography>
+              <Typography
+                className={classes.caption}
+                variant="caption"
+              >
+                {/* Since last month */}
               </Typography>
             </div>
           </CardContent>
@@ -91,8 +106,8 @@ const Klaviyo = props => {
   );
 };
 
-Klaviyo.propTypes = {
+CompletedUsers.propTypes = {
   className: PropTypes.string
 };
 
-export default Klaviyo;
+export default CompletedUsers;
