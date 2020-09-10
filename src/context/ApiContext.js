@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
 const apiPrefix =
-  'http://localhost:4000/' ||
   process.env.REACT_APP_BACKEND_HOST ||
   'https://bespoke-backend.herokuapp.com/';
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
