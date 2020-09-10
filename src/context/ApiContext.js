@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
-const apiPrefix = 'http://localhost:4000/';
-//  ||
-// process.env.REACT_APP_BACKEND_HOST ||
-// 'https://bespoke-backend.herokuapp.com/';
+const apiPrefix =
+  'http://localhost:4000/' ||
+  process.env.REACT_APP_BACKEND_HOST ||
+  'https://bespoke-backend.herokuapp.com/';
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 const REACT_APP_MONGO_DB_WEBHOOK = process.env.REACT_APP_MONGO_DB_WEBHOOK;
 
@@ -353,7 +353,7 @@ class ApiContextProvider extends Component {
         let splitItem = e.split(',  qty: ');
         cbdShampooCoarse = cbdShampooCoarse + parseInt(splitItem[1]);
       }
-      return
+      return;
     });
 
     const lineItems = {
