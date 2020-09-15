@@ -135,7 +135,7 @@ const LengthData = props => {
           <Divider />
           <CardContent>
             <div className={classes.chartContainer}>
-              <Doughnut data={data} options={options} />
+              <Bar data={data} options={options} />
             </div>
             <div className={classes.stats}>
               {/* {devices.map(device => (
