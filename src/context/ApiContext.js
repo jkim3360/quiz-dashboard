@@ -405,10 +405,384 @@ class ApiContextProvider extends Component {
     let hair_condition = 0;
     let hair_goals = 0;
     let weather = 0;
+    // length
+    let short = 0;
+    let chin_length = 0;
+    let shoulder_length = 0;
+    let long = 0;
+    // texture
+    let straight = 0;
+    let wavy = 0;
+    let curly = 0;
+    let coily = 0;
+    // color
+    let blonde = 0;
+    let brown = 0;
+    let black = 0;
+    let red = 0;
+    let silver = 0;
+    // thickness
+    let fine = 0;
+    let medium = 0;
+    let thick = 0;
+    // condition
+    let color_treated = 0;
+    let sensitive_irritated = 0;
+    let highlights = 0;
+    let chemically_straightened = 0;
+    let split_ends = 0;
+    let frequent_heat_styling = 0;
+    let none = 0;
+    // goal
+    let color_protect = 0;
+    let sooth_calm_scalp = 0;
+    let uv_protect = 0;
+    let damage_repair = 0;
+    let frizz_control = 0;
+    let smoothing = 0;
+    let healthy_shine = 0;
+    let hydrate = 0;
+    let volumizing = 0;
+
     let userCodes = [];
     let userListData = [];
 
     for (let user of userData.data) {
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_length === 'short'
+      ) {
+        short++;
+        // console.log(short, user._id, user.user_data.answers.hair_length);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_length === 'chin_length'
+      ) {
+        chin_length++;
+        // console.log(chin_length, user._id, user.user_data.answers.hair_length);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_length === 'shoulder_length'
+      ) {
+        shoulder_length++;
+        // console.log(
+        //   shoulder_length,
+        //   user._id,
+        //   user.user_data.answers.hair_length
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_length === 'long'
+      ) {
+        long++;
+        // console.log(long, user._id, user.user_data.answers.hair_length);
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_texture === 'straight'
+      ) {
+        straight++;
+        // console.log(straight, user._id, user.user_data.answers.hair_texture);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_texture === 'wavy'
+      ) {
+        wavy++;
+        // console.log(wavy, user._id, user.user_data.answers.hair_texture);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_texture === 'curly'
+      ) {
+        curly++;
+        // console.log(curly, user._id, user.user_data.answers.hair_texture);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_texture === 'coily'
+      ) {
+        coily++;
+        // console.log(coily, user._id, user.user_data.answers.hair_texture);
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_color === 'blonde'
+      ) {
+        blonde++;
+        // console.log(blonde, user._id, user.user_data.answers.hair_color);
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_color === 'brown'
+      ) {
+        brown++;
+        // console.log(brown, user._id, user.user_data.answers.hair_color);
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_color === 'black'
+      ) {
+        black++;
+        // console.log(black, user._id, user.user_data.answers.hair_color);
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_color === 'red'
+      ) {
+        red++;
+        // console.log(red, user._id, user.user_data.answers.hair_color);
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_color === 'silver'
+      ) {
+        silver++;
+        // console.log(silver, user._id, user.user_data.answers.hair_color);
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_thickness === 'fine'
+      ) {
+        fine++;
+        // console.log(fine, user._id, user.user_data.answers.hair_thickness);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_thickness === 'medium'
+      ) {
+        medium++;
+        // console.log(medium, user._id, user.user_data.answers.hair_thickness);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_thickness === 'thick'
+      ) {
+        thick++;
+        // console.log(thick, user._id, user.user_data.answers.hair_thickness);
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_condition &&
+        user.user_data.answers.hair_condition.includes('color_treated')
+      ) {
+        color_treated++;
+        // console.log(
+        //   color_treated,
+        //   'color_treated',
+        //   user._id,
+        //   user.user_data.answers.hair_condition
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_condition &&
+        user.user_data.answers.hair_condition.includes('sensitive_irritated')
+      ) {
+        sensitive_irritated++;
+        // console.log(
+        //   sensitive_irritated,
+        //   'sensitive_irritated',
+        //   user._id,
+        //   user.user_data.answers.hair_condition
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_condition &&
+        user.user_data.answers.hair_condition.includes('highlights')
+      ) {
+        highlights++;
+        // console.log(
+        //   highlights,
+        //   'highlights',
+        //   user._id,
+        //   user.user_data.answers.hair_condition
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_condition &&
+        user.user_data.answers.hair_condition.includes(
+          'chemically_straightened'
+        )
+      ) {
+        chemically_straightened++;
+        // console.log(
+        //   chemically_straightened,
+        //   'chemically_straightened',
+        //   user._id,
+        //   user.user_data.answers.hair_condition
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_condition &&
+        user.user_data.answers.hair_condition.includes('split_ends')
+      ) {
+        split_ends++;
+        // console.log(
+        //   split_ends,
+        //   'split_ends',
+        //   user._id,
+        //   user.user_data.answers.hair_condition
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_condition &&
+        user.user_data.answers.hair_condition.includes('frequent_heat_styling')
+      ) {
+        frequent_heat_styling++;
+        // console.log(
+        //   frequent_heat_styling,
+        //   'frequent_heat_styling',
+        //   user._id,
+        //   user.user_data.answers.hair_condition
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_condition &&
+        user.user_data.answers.hair_condition.includes('none')
+      ) {
+        none++;
+        // console.log(
+        //   none,
+        //   'none',
+        //   user._id,
+        //   user.user_data.answers.hair_condition
+        // );
+      }
+
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('color_protect')
+      ) {
+        color_protect++;
+        // console.log(
+        //   color_protect,
+        //   'color_protect',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('sooth_calm_scalp')
+      ) {
+        sooth_calm_scalp++;
+        // console.log(
+        //   sooth_calm_scalp,
+        //   'sooth_calm_scalp',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('uv_protect')
+      ) {
+        uv_protect++;
+        // console.log(
+        //   uv_protect,
+        //   'uv_protect',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('damage_repair')
+      ) {
+        damage_repair++;
+        console.log(
+          damage_repair,
+          'damage_repair',
+          user._id,
+          user.user_data.answers.hair_goals
+        );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('frizz_control')
+      ) {
+        frizz_control++;
+        // console.log(
+        //   frizz_control,
+        //   'frizz_control',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('smoothing')
+      ) {
+        smoothing++;
+        // console.log(
+        //   smoothing,
+        //   'smoothing',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('healthy_shine')
+      ) {
+        healthy_shine++;
+        // console.log(
+        //   healthy_shine,
+        //   'healthy_shine',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('hydrate')
+      ) {
+        hydrate++;
+        // console.log(
+        //   hydrate,
+        //   'hydrate',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+      if (
+        user.user_data.answers &&
+        user.user_data.answers.hair_goals &&
+        user.user_data.answers.hair_goals.includes('volumizing')
+      ) {
+        volumizing++;
+        // console.log(
+        //   volumizing,
+        //   'volumizing',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
+      }
+
       //  selfie does not exist and no CV compute characteristics - only email
       if (user.user_data.email && !user.user_data.answers) drop_email++;
       // if (user.user_data.answers) {
@@ -520,7 +894,39 @@ class ApiContextProvider extends Component {
       hair_thickness,
       hair_condition,
       hair_goals,
-      weather
+      weather,
+      short,
+      chin_length,
+      shoulder_length,
+      long,
+      straight,
+      wavy,
+      curly,
+      coily,
+      blonde,
+      brown,
+      black,
+      red,
+      silver,
+      fine,
+      medium,
+      thick,
+      color_treated,
+      sensitive_irritated,
+      highlights,
+      chemically_straightened,
+      split_ends,
+      frequent_heat_styling,
+      none,
+      color_protect,
+      sooth_calm_scalp,
+      uv_protect,
+      damage_repair,
+      frizz_control,
+      smoothing,
+      healthy_shine,
+      hydrate,
+      volumizing
     });
 
     // console.log(front_selfie_count, no_front_selfie_count);
@@ -575,7 +981,39 @@ class ApiContextProvider extends Component {
         ((hair_goals / droppedQuizCount) * 100).toFixed(2) +
         '%)',
       droppedGeofactors:
-        weather + ' (' + ((weather / droppedQuizCount) * 100).toFixed(2) + '%)'
+        weather + ' (' + ((weather / droppedQuizCount) * 100).toFixed(2) + '%)',
+      short: short,
+      chin_length: chin_length,
+      shoulder_length: shoulder_length,
+      long: long,
+      straight: straight,
+      wavy: wavy,
+      curly: curly,
+      coily: coily,
+      blonde: blonde,
+      brown: brown,
+      black: black,
+      red: red,
+      silver: silver,
+      fine: fine,
+      medium: medium,
+      thick: thick,
+      color_treated: color_treated,
+      sensitive_irritated: sensitive_irritated,
+      highlights: highlights,
+      chemically_straightened: chemically_straightened,
+      split_ends: split_ends,
+      frequent_heat_styling: frequent_heat_styling,
+      none: none,
+      color_protect: color_protect,
+      sooth_calm_scalp: sooth_calm_scalp,
+      uv_protect: uv_protect,
+      damage_repair: damage_repair,
+      frizz_control: frizz_control,
+      smoothing: smoothing,
+      healthy_shine: healthy_shine,
+      hydrate: hydrate,
+      volumizing: volumizing
     };
     localStorage.setItem('quizAnalytics', JSON.stringify(quizAnalytics));
 
