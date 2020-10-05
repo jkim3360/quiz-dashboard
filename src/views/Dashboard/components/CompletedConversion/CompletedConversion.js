@@ -62,7 +62,7 @@ const CompletedQuizCount = props => {
                   color="textSecondary"
                   gutterBottom
                   variant="body2">
-                  COMPLETED CON.
+                  COMPLETED CONV.
                 </Typography>
                 <Typography variant="h3">
                   {!context.completedQuizCount &&

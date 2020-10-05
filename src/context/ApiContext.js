@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import flatten from 'flat';
 
 const { Provider, Consumer } = React.createContext();
 const apiPrefix =
@@ -32,7 +33,10 @@ class ApiContextProvider extends Component {
     userCodes: [],
     userListData: [],
     variants: [],
-    totalSales: 0
+    totalSales: 0,
+    flattenedData: [],
+    unflattenedData: '',
+    loaded: false
   };
 
   async componentDidMount() {
@@ -387,6 +391,13 @@ class ApiContextProvider extends Component {
   fetchUserData = async () => {
     const userData = await axios.get(`${REACT_APP_MONGO_DB_WEBHOOK}`);
 
+    let flattenedData = [];
+
+    for (let data of userData.data) {
+      let flatData = flatten(data);
+      flattenedData.push(flatData);
+    }
+
     // all user data from mongodb webhook
     // console.log(JSON.stringify(userData));
 
@@ -710,12 +721,12 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('damage_repair')
       ) {
         damage_repair++;
-        console.log(
-          damage_repair,
-          'damage_repair',
-          user._id,
-          user.user_data.answers.hair_goals
-        );
+        // console.log(
+        //   damage_repair,
+        //   'damage_repair',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
       }
       if (
         user.user_data.answers &&
@@ -852,9 +863,11 @@ class ApiContextProvider extends Component {
     );
     this.setState({
       userCodes,
-      userListData
+      userListData,
+      flattenedData: flattenedData,
+      unflattenedData: userData.data,
+      loaded: true
     });
-
     // console.log(
     //   drop_email,
     //   front_selfie,
@@ -1015,6 +1028,7 @@ class ApiContextProvider extends Component {
       hydrate: hydrate,
       volumizing: volumizing
     };
+
     localStorage.setItem('quizAnalytics', JSON.stringify(quizAnalytics));
 
     if (localStorage.getItem('quizAnalytics')) {

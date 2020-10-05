@@ -74,6 +74,12 @@ const ConditionData = props => {
             : props.volumizing
         ],
         backgroundColor: [
+          // '#e8ffe3',
+          // '#f3b3cc',
+          // '#fbfcae',
+          // '#bbe6f5',
+          // '#fccd96',
+          // '#eeeeee',
           theme.palette.secondary.light,
           theme.palette.success.light,
           theme.palette.warning.light,

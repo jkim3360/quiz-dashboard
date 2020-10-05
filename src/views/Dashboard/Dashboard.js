@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 import { ApiContextConsumer } from '../../context/ApiContext';
+import { JsonToCsv, useJsonToCsv } from 'react-json-csv';
+import CsvDownload from 'react-json-to-csv';
 
 import {
   EmailsCaptured,
@@ -32,10 +34,38 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = () => {
   const classes = useStyles();
 
+  const filename = 'Csv-file.csv',
+    fields = {
+      index: 'Index',
+      guid: 'GUID'
+    },
+    style = {
+      padding: '5px'
+    },
+    data = [
+      { index: 0, guid: 'asdf231234' },
+      { index: 1, guid: 'wetr2343af' }
+    ],
+    text = 'Convert Json to Csv';
+
+  console.log(JSON.parse(JSON.stringify(data)));
+
   return (
     <ApiContextConsumer>
       {context => (
         <div className={classes.root}>
+          {console.log(context)}
+          {context.loaded === true ? (
+            <CsvDownload data={context.flattenedData} filename={filename}>Download (Flattened)</CsvDownload>
+          ) : (
+            ''
+          )}
+
+          {context.loaded === true ? (
+            <CsvDownload data={context.unflattenedData} filename={filename}>Download (Unflattened)</CsvDownload>
+          ) : (
+            ''
+          )}
           <Grid container spacing={4}>
             <Grid item lg={3} sm={6} xl={2} xs={12}>
               <EmailsCaptured />
