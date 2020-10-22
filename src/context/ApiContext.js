@@ -710,12 +710,12 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('damage_repair')
       ) {
         damage_repair++;
-        console.log(
-          damage_repair,
-          'damage_repair',
-          user._id,
-          user.user_data.answers.hair_goals
-        );
+        // console.log(
+        //   damage_repair,
+        //   'damage_repair',
+        //   user._id,
+        //   user.user_data.answers.hair_goals
+        // );
       }
       if (
         user.user_data.answers &&

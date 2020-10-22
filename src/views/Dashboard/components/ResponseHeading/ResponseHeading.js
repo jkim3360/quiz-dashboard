@@ -1,18 +1,10 @@
 import React from 'react';
-import { ApiContextConsumer } from '../../../../context/ApiContext';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import {
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-  Avatar,
-  LinearProgress
-} from '@material-ui/core';
-import ErrorOutline from '@material-ui/icons/ErrorOutline';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Card, CardContent, Typography } from '@material-ui/core';
+// import ErrorOutline from '@material-ui/icons/ErrorOutline';
+// import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,24 +46,17 @@ const ResponseHeading = props => {
   }
 
   return (
- 
-        <Card
-          {...rest}
-          className={clsx(classes.root, className)}
-        >
-          <CardContent>
-        
-                <Typography
-                  className={classes.title}
-                  color="inherit"
-                  gutterBottom
-                  variant="body2"
-                >
-                  CUSTOMER RESPONSES
-                </Typography>
-           
-          </CardContent>
-        </Card>
+    <Card {...rest} className={clsx(classes.root, className)}>
+      <CardContent>
+        <Typography
+          className={classes.title}
+          color="inherit"
+          gutterBottom
+          variant="body2">
+          CUSTOMER RESPONSES
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 

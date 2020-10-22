@@ -14,7 +14,6 @@ import {
   SelfieCount,
   DropOffDataBar,
   DropOffData,
-  ResponseHeading,
   LengthData,
   ColorData,
   TextureData,
