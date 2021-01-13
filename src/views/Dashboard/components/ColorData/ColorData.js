@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApiContextConsumer } from '../../../../context/ApiContext';
-import { Doughnut, Pie, Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/styles';
@@ -68,7 +68,7 @@ const ColorData = props => {
           theme.palette.error.dark,
           '#C0C0C0'
         ],
-        label: ["Hair Color"],
+        label: ['Hair Color'],
         borderWidth: 8,
         borderColor: theme.palette.white,
         hoverBorderColor: theme.palette.white

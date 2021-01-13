@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApiContextConsumer } from '../../../../context/ApiContext';
-import { Doughnut, Pie, Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/styles';
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     padding: theme.spacing(1)
   },
-  deviceIcon: {
+deviceIcon: {
     color: theme.palette.icon
   }
 }));

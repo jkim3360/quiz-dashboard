@@ -111,9 +111,7 @@ const LatestOrders = props => {
                           </TableCell>
                           <TableCell>{order.email}</TableCell>
                           <TableCell>
-                            {/* {moment */}
                             {new Date(order.orderCreated).toDateString()}
-                            {/* .format('DD/MM/YYYY')} */}
                           </TableCell>
                           <TableCell>
                             <div className={classes.statusContainer}>

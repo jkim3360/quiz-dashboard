@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApiContextConsumer } from '../../../../context/ApiContext';
-import { Doughnut, Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/styles';
@@ -48,15 +48,15 @@ const LengthData = props => {
           localStorage.getItem('quizAnalytics')
             ? parseInt(quizAnalytics.short)
             : props.short,
-            localStorage.getItem('quizAnalytics')
-              ? parseInt(quizAnalytics.long)
-              : props.long,
+          localStorage.getItem('quizAnalytics')
+            ? parseInt(quizAnalytics.long)
+            : props.long,
           localStorage.getItem('quizAnalytics')
             ? parseInt(quizAnalytics.chin_length)
             : props.chin_length,
           localStorage.getItem('quizAnalytics')
             ? parseInt(quizAnalytics.shoulder_length)
-            : props.shoulder_length,
+            : props.shoulder_length
         ],
         backgroundColor: [
           theme.palette.secondary.light,

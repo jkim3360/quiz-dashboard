@@ -39,7 +39,6 @@ class ApiContextProvider extends Component {
     this.fetchKlaviyoEmails();
     this.fetchShopifyOrders();
     this.fetchUserData();
-    // localStorage.setItem('userData', JSON.stringify(userData));s
   }
 
   fetchKlaviyoEmails = async () => {
@@ -52,11 +51,6 @@ class ApiContextProvider extends Component {
   };
 
   fetchShopifyOrders = async () => {
-    // orders from Shopify admin API
-    // let fekkaiOrders = await axios(
-    //   `https://bespoke-backend.herokuapp.com/fekkai?apikey=AkZv1hWkkDH9W2sP9Q5WdX8L8u9lbWeO`
-    // );
-
     // quiz bundle discount orders from MongoDB
     let fekkaiOrders = await axios(
       apiPrefix + `fekkai?apikey=${REACT_APP_API_KEY}`
@@ -453,32 +447,24 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_length === 'short'
       ) {
         short++;
-        // console.log(short, user._id, user.user_data.answers.hair_length);
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_length === 'chin_length'
       ) {
         chin_length++;
-        // console.log(chin_length, user._id, user.user_data.answers.hair_length);
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_length === 'shoulder_length'
       ) {
         shoulder_length++;
-        // console.log(
-        //   shoulder_length,
-        //   user._id,
-        //   user.user_data.answers.hair_length
-        // );
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_length === 'long'
       ) {
         long++;
-        // console.log(long, user._id, user.user_data.answers.hair_length);
       }
 
       if (
@@ -486,28 +472,24 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_texture === 'straight'
       ) {
         straight++;
-        // console.log(straight, user._id, user.user_data.answers.hair_texture);
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_texture === 'wavy'
       ) {
         wavy++;
-        // console.log(wavy, user._id, user.user_data.answers.hair_texture);
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_texture === 'curly'
       ) {
         curly++;
-        // console.log(curly, user._id, user.user_data.answers.hair_texture);
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_texture === 'coily'
       ) {
         coily++;
-        // console.log(coily, user._id, user.user_data.answers.hair_texture);
       }
 
       if (
@@ -515,7 +497,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_color === 'blonde'
       ) {
         blonde++;
-        // console.log(blonde, user._id, user.user_data.answers.hair_color);
       }
 
       if (
@@ -523,7 +504,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_color === 'brown'
       ) {
         brown++;
-        // console.log(brown, user._id, user.user_data.answers.hair_color);
       }
 
       if (
@@ -531,7 +511,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_color === 'black'
       ) {
         black++;
-        // console.log(black, user._id, user.user_data.answers.hair_color);
       }
 
       if (
@@ -539,7 +518,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_color === 'red'
       ) {
         red++;
-        // console.log(red, user._id, user.user_data.answers.hair_color);
       }
 
       if (
@@ -547,7 +525,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_color === 'silver'
       ) {
         silver++;
-        // console.log(silver, user._id, user.user_data.answers.hair_color);
       }
 
       if (
@@ -555,21 +532,18 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_thickness === 'fine'
       ) {
         fine++;
-        // console.log(fine, user._id, user.user_data.answers.hair_thickness);
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_thickness === 'medium'
       ) {
         medium++;
-        // console.log(medium, user._id, user.user_data.answers.hair_thickness);
       }
       if (
         user.user_data.answers &&
         user.user_data.answers.hair_thickness === 'thick'
       ) {
         thick++;
-        // console.log(thick, user._id, user.user_data.answers.hair_thickness);
       }
       if (
         user.user_data.answers &&
@@ -577,12 +551,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_condition.includes('color_treated')
       ) {
         color_treated++;
-        // console.log(
-        //   color_treated,
-        //   'color_treated',
-        //   user._id,
-        //   user.user_data.answers.hair_condition
-        // );
       }
       if (
         user.user_data.answers &&
@@ -590,12 +558,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_condition.includes('sensitive_irritated')
       ) {
         sensitive_irritated++;
-        // console.log(
-        //   sensitive_irritated,
-        //   'sensitive_irritated',
-        //   user._id,
-        //   user.user_data.answers.hair_condition
-        // );
       }
       if (
         user.user_data.answers &&
@@ -603,12 +565,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_condition.includes('highlights')
       ) {
         highlights++;
-        // console.log(
-        //   highlights,
-        //   'highlights',
-        //   user._id,
-        //   user.user_data.answers.hair_condition
-        // );
       }
       if (
         user.user_data.answers &&
@@ -618,12 +574,6 @@ class ApiContextProvider extends Component {
         )
       ) {
         chemically_straightened++;
-        // console.log(
-        //   chemically_straightened,
-        //   'chemically_straightened',
-        //   user._id,
-        //   user.user_data.answers.hair_condition
-        // );
       }
       if (
         user.user_data.answers &&
@@ -631,12 +581,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_condition.includes('split_ends')
       ) {
         split_ends++;
-        // console.log(
-        //   split_ends,
-        //   'split_ends',
-        //   user._id,
-        //   user.user_data.answers.hair_condition
-        // );
       }
       if (
         user.user_data.answers &&
@@ -644,12 +588,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_condition.includes('frequent_heat_styling')
       ) {
         frequent_heat_styling++;
-        // console.log(
-        //   frequent_heat_styling,
-        //   'frequent_heat_styling',
-        //   user._id,
-        //   user.user_data.answers.hair_condition
-        // );
       }
       if (
         user.user_data.answers &&
@@ -657,12 +595,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_condition.includes('none')
       ) {
         none++;
-        // console.log(
-        //   none,
-        //   'none',
-        //   user._id,
-        //   user.user_data.answers.hair_condition
-        // );
       }
 
       if (
@@ -671,12 +603,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('color_protect')
       ) {
         color_protect++;
-        // console.log(
-        //   color_protect,
-        //   'color_protect',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -684,12 +610,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('sooth_calm_scalp')
       ) {
         sooth_calm_scalp++;
-        // console.log(
-        //   sooth_calm_scalp,
-        //   'sooth_calm_scalp',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -697,12 +617,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('uv_protect')
       ) {
         uv_protect++;
-        // console.log(
-        //   uv_protect,
-        //   'uv_protect',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -710,12 +624,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('damage_repair')
       ) {
         damage_repair++;
-        // console.log(
-        //   damage_repair,
-        //   'damage_repair',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -723,12 +631,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('frizz_control')
       ) {
         frizz_control++;
-        // console.log(
-        //   frizz_control,
-        //   'frizz_control',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -736,12 +638,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('smoothing')
       ) {
         smoothing++;
-        // console.log(
-        //   smoothing,
-        //   'smoothing',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -749,12 +645,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('healthy_shine')
       ) {
         healthy_shine++;
-        // console.log(
-        //   healthy_shine,
-        //   'healthy_shine',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -762,12 +652,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('hydrate')
       ) {
         hydrate++;
-        // console.log(
-        //   hydrate,
-        //   'hydrate',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
       if (
         user.user_data.answers &&
@@ -775,12 +659,6 @@ class ApiContextProvider extends Component {
         user.user_data.answers.hair_goals.includes('volumizing')
       ) {
         volumizing++;
-        // console.log(
-        //   volumizing,
-        //   'volumizing',
-        //   user._id,
-        //   user.user_data.answers.hair_goals
-        // );
       }
 
       //  selfie does not exist and no CV compute characteristics - only email
