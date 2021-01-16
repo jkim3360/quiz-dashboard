@@ -58,7 +58,7 @@ class ApiContextProvider extends Component {
     let quizOrdersRes = await axios.get(
       apiPrefix + `quiz-orders?apikey=${REACT_APP_API_KEY}`
     );
-    console.log(quizOrdersRes);
+    // console.log(quizOrdersRes);
 
     let totalSales = 0;
     let quizOrdersArr = [];
