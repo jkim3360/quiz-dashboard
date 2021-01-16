@@ -69,6 +69,7 @@ const LengthData = props => {
           theme.palette.error.dark,
           theme.palette.warning.dark
         ],
+        label: ['Hair Length'],
         borderWidth: 8,
         borderColor: theme.palette.white,
         hoverBorderColor: theme.palette.white

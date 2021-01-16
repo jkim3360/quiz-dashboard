@@ -138,9 +138,9 @@ const UsersTable = props => {
                           <Typography variant="body1">{user.name}</Typography>
                         </span>
                       </TableCell>
-                      <TableCell>{user.email}</TableCell>
+                      <TableCell>{user.email ? user.email : 'n/a'}</TableCell>
                       <TableCell>{user.userCode}</TableCell>
-                      <TableCell>{user.city}</TableCell>
+                      <TableCell>{user.city ? user.city : 'n/a'}</TableCell>
                       <TableCell>
                         {new Date(user.created).toDateString()}
                       </TableCell>

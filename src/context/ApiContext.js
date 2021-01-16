@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
-const apiPrefix =
-  process.env.REACT_APP_BACKEND_HOST || 'http://localhost:4000/';
+const apiPrefix = 'https://bespoke-backend.herokuapp.com/'
+  // process.env.REACT_APP_BACKEND_HOST || 'http://localhost:4000/';
 
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 const REACT_APP_MONGO_DB_WEBHOOK = process.env.REACT_APP_MONGO_DB_WEBHOOK;
@@ -176,10 +176,10 @@ class ApiContextProvider extends Component {
             email: order.email,
             total_price: order.total_price
           };
-          await axios.post(
-            apiPrefix + `quiz-orders?apikey=${REACT_APP_API_KEY}`,
-            orderObj
-          );
+          // await axios.post(
+          //   apiPrefix + `quiz-orders?apikey=${REACT_APP_API_KEY}`,
+          //   orderObj
+          // );
           console.log('order id not found. posting to db!!');
         }
         // break to prevent posting lineItems more than once
