@@ -70,7 +70,7 @@ const CompletedUsers = props => {
                   gutterBottom
                   variant="body2"
                 >
-                  COMPLETED QUIZ COUNT
+                  COMPLETED QUIZZES
                 </Typography>
                 <Typography variant="h3">
                   {!context.completedQuizCount

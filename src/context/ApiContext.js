@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const { Provider, Consumer } = React.createContext();
-const apiPrefix = 'https://bespoke-backend.herokuapp.com/'
-  // process.env.REACT_APP_BACKEND_HOST || 'http://localhost:4000/';
+const apiPrefix = 'https://bespoke-backend.herokuapp.com/';
+// process.env.REACT_APP_BACKEND_HOST || 'http://localhost:4000/';
 
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 const REACT_APP_MONGO_DB_WEBHOOK = process.env.REACT_APP_MONGO_DB_WEBHOOK;
@@ -79,7 +79,6 @@ class ApiContextProvider extends Component {
     );
 
     let variantsData = variantsRes.data.products;
-    // console.log(variantsData);
     const variantIds = [
       4416274399322,
       4415929483354,
@@ -116,14 +115,12 @@ class ApiContextProvider extends Component {
       }
     }
 
-    // console.log(variants);
     this.setState({
       quizOrdersArr: quizOrdersArr.reverse(),
       variants,
       totalSales
     });
 
-    // console.log(quizOrdersRes.data.length);
     // find all order dates from mongo as unique identifiers
     const orderIds = [];
     for (let order of quizOrdersRes.data) {
@@ -664,21 +661,17 @@ class ApiContextProvider extends Component {
 
       //  selfie does not exist and no CV compute characteristics - only email
       if (user.user_data.email && !user.user_data.answers) drop_email++;
-      // if (user.user_data.answers) {
       if (user.user_data.compute === true) {
         completedQuizCount++;
       }
       if (user.user_data.compute === false) {
         droppedQuizCount++;
+        dropped++;
       }
       if (user.user_data.front_selfie !== null) {
         front_selfie_count++;
       } else {
         no_front_selfie_count++;
-      }
-
-      if (user.user_data.compute === false) {
-        dropped++;
       }
       if (user.user_data.compute === true) {
         complete++;
@@ -807,8 +800,6 @@ class ApiContextProvider extends Component {
       hydrate,
       volumizing
     });
-
-    // console.log(front_selfie_count, no_front_selfie_count);
 
     const { emailCount, quizOrdersArr } = this.state;
 

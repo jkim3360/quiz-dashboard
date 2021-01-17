@@ -48,26 +48,18 @@ const Klaviyo = props => {
   return (
     <ApiContextConsumer>
       {context => (
-        <Card
-          {...rest}
-          className={clsx(classes.root, className)}
-        >
+        <Card {...rest} className={clsx(classes.root, className)}>
           <CardContent>
-            <Grid
-              container
-              justify="space-between"
-            >
+            <Grid container justify="space-between">
               <Grid item>
                 <Typography
                   className={classes.title}
                   color="textSecondary"
                   gutterBottom
-                  variant="body2"
-                >
+                  variant="body2">
                   EMAILS CAPTURED{' '}
                 </Typography>
-                <Typography variant="h3">{
-                context.emailCount}</Typography>
+                <Typography variant="h3">{context.emailCount}</Typography>
               </Grid>
               <Grid item>
                 <Avatar className={classes.avatar}>
@@ -79,10 +71,7 @@ const Klaviyo = props => {
               {/* <ArrowDownwardIcon className={classes.differenceIcon} /> */}
               <Typography
                 className={classes.differenceValue}
-                variant="body2"
-              >
-                03-20-20 Launch{' '}
-              </Typography>
+                variant="body2"></Typography>
             </div>
           </CardContent>
         </Card>

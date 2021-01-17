@@ -53,28 +53,28 @@ const CompletedQuizCount = props => {
   return (
     <ApiContextConsumer>
       {context => (
-        <Card
-          {...rest}
-          className={clsx(classes.root, className)}
-        >
+        <Card {...rest} className={clsx(classes.root, className)}>
           <CardContent>
-            <Grid
-              container
-              justify="space-between"
-            >
+            <Grid container justify="space-between">
               <Grid item>
                 <Typography
                   className={classes.title}
                   color="textSecondary"
                   gutterBottom
-                  variant="body2"
-                >
-                  TOT. QUIZ CONV.
+                  variant="body2">
+                  QUIZ CONV. RATE**
                 </Typography>
                 <Typography variant="h3">
-                  {!context.completedQuizCount && !context.completedQuizCount 
-                    ? quizAnalytics ? quizAnalytics.totalConversion : <CircularProgress />
-                    : (context.totalConversion * 100).toFixed(2) + '%'}
+                  {!context.completedQuizCount &&
+                  !context.completedQuizCount ? (
+                    quizAnalytics ? (
+                      quizAnalytics.totalConversion
+                    ) : (
+                      <CircularProgress />
+                    )
+                  ) : (
+                    (context.totalConversion * 100).toFixed(2) + '%'
+                  )}
                 </Typography>
               </Grid>
               <Grid item>
@@ -88,11 +88,8 @@ const CompletedQuizCount = props => {
               value={(context.completedQuizCount / context.quizCount) * 100}
               variant="determinate"
             />
-            <Typography
-              className={classes.caption}
-              variant="caption"
-            >
-              {localStorage.getItem('quizAnalytics')
+            <Typography className={classes.caption} variant="caption">
+              {/* {localStorage.getItem('quizAnalytics')
                 ? quizAnalytics.droppedQuizCount
                 : context.droppedQuizCount}{' '}
               out of{' '}
@@ -100,6 +97,9 @@ const CompletedQuizCount = props => {
                 ? quizAnalytics.quizCount
                 : context.quizCount}{' '}
               users did not complete quiz
+              <br /> */}
+              ** This metric indicates conversion rate calculated with all quiz
+              instances.
             </Typography>
           </CardContent>
         </Card>

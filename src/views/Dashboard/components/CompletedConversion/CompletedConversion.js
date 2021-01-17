@@ -62,7 +62,7 @@ const CompletedQuizCount = props => {
                   color="textSecondary"
                   gutterBottom
                   variant="body2">
-                  COMPLETED CON.
+                  QUIZ CONV. RATE*
                 </Typography>
                 <Typography variant="h3">
                   {!context.completedQuizCount &&
@@ -89,14 +89,15 @@ const CompletedQuizCount = props => {
               variant="determinate"
             />
             <Typography className={classes.caption} variant="caption">
-              {localStorage.getItem('quizAnalytics')
+              {/* {localStorage.getItem('quizAnalytics')
                 ? quizAnalytics.completed
                 : context.completedQuizCount}{' '}
               out of{' '}
               {localStorage.getItem('quizAnalytics')
                 ? quizAnalytics.quizCount
                 : context.quizCount}{' '}
-              users completed quiz
+              users completed quiz. <br/> */}
+              * This metric indicates conversion rate calculated with completed quizzes only.
             </Typography>
           </CardContent>
         </Card>
